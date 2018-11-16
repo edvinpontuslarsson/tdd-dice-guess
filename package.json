@@ -1,0 +1,24 @@
+{
+  "name": "tdd-dice-guess",
+  "version": "1.0.0",
+  "description": "A game where you guess the total value of rolled dice",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "tdd",
+    "JavaScript",
+    "dice-guess"
+  ],
+  "author": "Edvin Larsson",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "dev": "^0.1.3",
+    "mocha": "^5.2.0"
+  }
+}
