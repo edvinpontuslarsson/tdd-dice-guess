@@ -1,5 +1,9 @@
 'use strict'
 
-class Die {}
+class Die {
+    constructor() {
+        this.faceValue = null
+    }
+}
 
 module.exports = Die
