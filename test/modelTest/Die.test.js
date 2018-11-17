@@ -8,16 +8,13 @@ import { assert } from 'chai'
 import Die from '../../src/model/Die'
 
 describe('Tests of Die instance', () => {
-    
-    describe('Tests that Die can be instantiated', () => {
-        
+      
+    describe('Tests of instantiation', () => {
+
         it('new Die() should be defined', done => {
             assert.isDefined(new Die())
             done()
         })
-    })
-
-    describe('Tests of Die.faceValue', () => {
         
         it('new Die().faceValue should be undefined since private', done => {
             assert.isUndefined(new Die()._faceValue)
