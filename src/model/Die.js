@@ -10,4 +10,4 @@ class Die {
     // roll()
 }
 
-module.exports = Die
+export default Die

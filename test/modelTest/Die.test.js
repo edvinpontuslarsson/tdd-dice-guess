@@ -1,7 +1,11 @@
 'use strict'
 
-const assert = require('chai').assert
-const Die = require('../../src/model/Die')
+// const assert = require('chai').assert
+// const Die = require('../../src/model/Die')
+
+import '@babel/polyfill'
+import { assert } from 'chai'
+import Die from '../../src/model/Die'
 
 describe('Test of Die instance', () => {
     describe('Tests that Die can be instantiated', () => {
