@@ -1,5 +1,5 @@
 'use strict'
 
-// class Die {}
+class Die {}
 
-// module.exports = Die
+module.exports = Die
