@@ -1,9 +1,10 @@
 'use strict'
 
 export default class Die {
-    constructor() {
-        // babel plugin makes attribute private
+    constructor(maxValue = 6) {
+        // babel plugin makes these attributes private
         this._faceValue = null
+        this._maxValue = maxValue
     }
 
     getFaceValue() { return this._faceValue }
