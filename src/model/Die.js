@@ -1,13 +1,11 @@
 'use strict'
 
-class Die {
+export default class Die {
     constructor() {
-        this.faceValue = null
+        this._faceValue = null // private with help of babel
     }
 
-    getFaceValue() { return this.faceValue }
+    getFaceValue() { return this._faceValue }
 
     // roll()
 }
-
-export default Die

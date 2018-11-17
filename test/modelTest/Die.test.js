@@ -7,8 +7,10 @@ import '@babel/polyfill'
 import { assert } from 'chai'
 import Die from '../../src/model/Die'
 
-describe('Test of Die instance', () => {
+describe('Tests of Die instance', () => {
+    
     describe('Tests that Die can be instantiated', () => {
+        
         it('new Die() should be defined', done => {
             assert.isDefined(new Die())
             done()
@@ -16,8 +18,10 @@ describe('Test of Die instance', () => {
     })
 
     describe('Tests of Die.faceValue', () => {
+        
         it('new Die().faceValue should be undefined since private', done => {
-            assert.isUndefined(new Die().faceValue)
+            assert.isUndefined(new Die()._faceValue)
+            done()
         })
         
         it('new Die().getFaceValue() should be null', done => {
