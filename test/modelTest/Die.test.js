@@ -12,8 +12,8 @@ describe('Test of Die instance', () => {
     })
 
     describe('Tests of Die.faceValue', () => {
-        it('new Die().faceValue should be null', done => {
-            assert.isNull(new Die().faceValue)
+        it('new Die().getFaceValue() should be null', done => {
+            assert.isNull(new Die().getFaceValue())
             done()
         })
     })
