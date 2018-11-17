@@ -12,17 +12,34 @@ describe('Tests of Die instance', () => {
     describe('Tests of instantiation', () => {
 
         it('new Die() should be defined', done => {
-            assert.isDefined(new Die())
+            const actual = new Die()
+
+            assert.isDefined(actual)
             done()
         })
         
         it('new Die().faceValue should be undefined since private', done => {
-            assert.isUndefined(new Die()._faceValue)
+            const actual = new Die()._faceValue
+            
+            assert.isUndefined(actual)
             done()
         })
         
         it('new Die().getFaceValue() should be null', done => {
-            assert.isNull(new Die().getFaceValue())
+            const actual = new Die().getFaceValue()
+
+            assert.isNull(actual)
+            done()
+        })
+    })
+
+    describe('Tests of Die.roll()', () => {
+        it('die.getFaceValue() should now not be null', done => {
+            const die = new Die()
+            die.roll()
+            const actual = die.getFaceValue()
+
+            assert.isNotNull(actual)
             done()
         })
     })
