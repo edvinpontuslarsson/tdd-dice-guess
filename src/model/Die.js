@@ -2,7 +2,8 @@
 
 export default class Die {
     constructor() {
-        this._faceValue = null // private with help of babel
+        // babel plugin makes attribute private
+        this._faceValue = null
     }
 
     getFaceValue() { return this._faceValue }
