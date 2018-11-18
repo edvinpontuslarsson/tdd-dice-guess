@@ -47,9 +47,17 @@ describe('Tests of Die instance', () => {
         })
 
         it('1000 rolls should result in > 100 of each value', done => {
+            const dieFrequencyTable = getDieFrequencyTable()
+            
             for (let roll = 1; roll <= 1000; roll++) {
-
+                const dieValue = getFaceValueAfterNewDieRoll()
+                const dieKey = dieValue.toString()
+                dieFrequencyTable[dieKey] += 1
             }
+
+            const actual = isEachDieValueAboveOneHundred(dieFrequencyTable)
+            assert.isTrue(actual)
+            done()
         })
     })
 })
@@ -62,15 +70,23 @@ function getFaceValueAfterNewDieRoll() {
 
 function getDieFrequencyTable() {
     return {
-        ones:   0,
-        twos:   0,
-        threes: 0,
-        fours:  0,
-        fives:  0,
-        sixes:  0
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0
     }
 }
 
-function isEachValueAboveOneHundred(dieFrequencyTable) {
-    // Object.keys, perhaps reduce
+function isEachDieValueAboveOneHundred(dieFrequencyTable) {
+    let answer = true
+    
+    Object.keys(dieFrequencyTable).forEach(key => {
+        if(dieFrequencyTable[key] < 100) {
+            answer = false
+        }
+    })
+
+    return answer
 }
