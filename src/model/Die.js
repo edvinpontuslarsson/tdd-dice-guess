@@ -1,6 +1,6 @@
 'use strict'
 
-export default class Die {
+class Die {
     constructor() {
         // babel plugin makes these attributes private
         this._faceValue = null
@@ -10,3 +10,5 @@ export default class Die {
 
     roll() { this._faceValue = 6 }
 }
+
+export default Die
