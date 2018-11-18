@@ -8,5 +8,5 @@ export default class Die {
 
     getFaceValue() { return this._faceValue }
 
-    roll() { this._faceValue = 0 }
+    roll() { this._faceValue = 8 }
 }
