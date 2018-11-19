@@ -6,13 +6,6 @@ import Die from '../../src/model/Die'
 describe('Tests of Die instance', () => {
       
     describe('Tests of instantiation', () => {
-
-        it('new Die() should be defined', () => {
-            expect(
-                new Die()
-            )
-                .to.not.be.undefined
-        })
         
         it('new Die()._faceValue should be undefined since private', () => {
             expect(
@@ -30,13 +23,6 @@ describe('Tests of Die instance', () => {
     })
 
     describe('Tests after calling Die.roll()', () => {
-
-        it('die.getFaceValue() should now not be null', () => {
-            expect(
-                getFaceValueAfterNewDieRoll()
-            )
-                .to.not.be.null
-        })
 
         it('die.getFaceValue() should now return a value between 1 & 6', () => {
             for (let x = 1; x <= 100; x++) {
