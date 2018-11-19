@@ -7,52 +7,46 @@ describe('Tests of Die instance', () => {
       
     describe('Tests of instantiation', () => {
 
-        it('new Die() should be defined', done => {
+        it('new Die() should be defined', () => {
             const actual = new Die()
             assert.isDefined(actual)
-            done()
         })
         
-        it('new Die()._faceValue should be undefined since private', done => {
+        it('new Die()._faceValue should be undefined since private', () => {
             const actual = new Die()._faceValue
             assert.isUndefined(actual)
-            done()
         })
         
-        it('new Die().getFaceValue() should be null', done => {
+        it('new Die().getFaceValue() should be null', () => {
             const actual = new Die().getFaceValue()
             assert.isNull(actual)
-            done()
         })
     })
 
     describe('Tests after calling Die.roll()', () => {
 
-        it('die.getFaceValue() should now not be null', done => {
+        it('die.getFaceValue() should now not be null', () => {
             const actual = getFaceValueAfterNewDieRoll()
             assert.isNotNull(actual)
-            done()
         })
 
-        it('die.getFaceValue() should now return >= 1', done => {
+        it('die.getFaceValue() should now return >= 1', () => {
             for (let x = 1; x <= 100; x++) {
                 const actual = getFaceValueAfterNewDieRoll()
                 assert.isTrue(actual >= 1)
             }
             
-            done()
         })
 
-        it('die.getFaceValue() should now return <= 6', done => {        
+        it('die.getFaceValue() should now return <= 6', () => {        
             for (let x = 1; x <= 100; x++) {
                 const actual = getFaceValueAfterNewDieRoll()
                 assert.isTrue(actual <= 6)
             }
 
-            done()
         })
 
-        it('1000 rolls should result in > 100 of each value', done => {
+        it('1000 rolls should result in > 100 of each value', () => {
             const dieFrequencyTable = {}
             
             for (let roll = 1; roll <= 1000; roll++) {
@@ -63,7 +57,6 @@ describe('Tests of Die instance', () => {
 
             const actual = isEachDieValueAboveOneHundred(dieFrequencyTable)
             assert.isTrue(actual)
-            done()
         })
     })
 })
