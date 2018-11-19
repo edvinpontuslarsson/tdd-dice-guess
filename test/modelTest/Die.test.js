@@ -5,7 +5,7 @@ import Die from '../../src/model/Die'
 
 describe('Tests of Die instance', () => {
       
-    describe('Tests of instantiation', () => {
+    describe('Tests of initial state', () => {
         
         it('new Die()._faceValue should be undefined since private', () => {
             expect(
