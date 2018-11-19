@@ -80,10 +80,10 @@ function getDieFrequencyTable() {
 }
 
 function isEachDieValueAboveOneHundred(dieFrequencyTable) {
-    let answer = true
+    let answer = typeof dieFrequencyTable === 'object'
     
     Object.keys(dieFrequencyTable).forEach(key => {
-        if(dieFrequencyTable[key] < 100) {
+        if (dieFrequencyTable[key] < 100) {
             answer = false
         }
     })
