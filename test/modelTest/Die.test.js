@@ -36,13 +36,13 @@ describe('Tests of Die instance', () => {
 
         it('die.getFaceValue() should now be >= 1', done => {
             const actual = getFaceValueAfterNewDieRoll()
-            assert.operator(actual, '>=', 1)
+            assert.isTrue(actual >= 1)
             done()
         })
 
         it('die.getFaceValue() should now be <= 6', done => {
             const actual = getFaceValueAfterNewDieRoll()
-            assert.operator(actual, '<=', 6)
+            assert.isTrue(actual <= 6)
             done()
         })
 
@@ -59,8 +59,6 @@ describe('Tests of Die instance', () => {
             assert.isTrue(actual)
             done()
         })
-
-        // standard deviation < 50
     })
 })
 
