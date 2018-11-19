@@ -8,7 +8,10 @@ class Die {
 
     getFaceValue() { return this._faceValue }
 
-    roll() { this._faceValue = 6 }
+    roll() {
+        this._faceValue = 
+            Math.ceil(Math.random() * 6)
+    }
 }
 
 export default Die

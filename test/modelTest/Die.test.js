@@ -59,6 +59,8 @@ describe('Tests of Die instance', () => {
             assert.isTrue(actual)
             done()
         })
+
+        // standard deviation < 50
     })
 })
 
