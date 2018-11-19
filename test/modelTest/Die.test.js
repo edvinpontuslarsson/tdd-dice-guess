@@ -1,6 +1,6 @@
 'use strict'
 
-import { assert } from 'chai'
+import { expect } from 'chai'
 import Die from '../../src/model/Die'
 
 describe('Tests of Die instance', () => {
@@ -8,42 +8,43 @@ describe('Tests of Die instance', () => {
     describe('Tests of instantiation', () => {
 
         it('new Die() should be defined', () => {
-            const actual = new Die()
-            assert.isDefined(actual)
+            expect(
+                new Die()
+            )
+                .to.not.be.undefined
         })
         
         it('new Die()._faceValue should be undefined since private', () => {
-            const actual = new Die()._faceValue
-            assert.isUndefined(actual)
+            expect(
+                new Die()._faceValue
+            )
+                .to.be.undefined
         })
         
         it('new Die().getFaceValue() should be null', () => {
-            const actual = new Die().getFaceValue()
-            assert.isNull(actual)
+            expect(
+                new Die().getFaceValue()
+            )
+                .to.be.null
         })
     })
 
     describe('Tests after calling Die.roll()', () => {
 
         it('die.getFaceValue() should now not be null', () => {
-            const actual = getFaceValueAfterNewDieRoll()
-            assert.isNotNull(actual)
+            expect(
+                getFaceValueAfterNewDieRoll()
+            )
+                .to.not.be.null
         })
 
-        it('die.getFaceValue() should now return >= 1', () => {
+        it('die.getFaceValue() should now return a value between 1 & 6', () => {
             for (let x = 1; x <= 100; x++) {
-                const actual = getFaceValueAfterNewDieRoll()
-                assert.isTrue(actual >= 1)
+                expect(
+                    getFaceValueAfterNewDieRoll()
+                )
+                    .to.be.within(1, 6)
             }
-            
-        })
-
-        it('die.getFaceValue() should now return <= 6', () => {        
-            for (let x = 1; x <= 100; x++) {
-                const actual = getFaceValueAfterNewDieRoll()
-                assert.isTrue(actual <= 6)
-            }
-
         })
 
         it('1000 rolls should result in > 100 of each value', () => {
@@ -55,8 +56,10 @@ describe('Tests of Die instance', () => {
                 dieFrequencyTable[dieKey] += 1
             }
 
-            const actual = isEachDieValueAboveOneHundred(dieFrequencyTable)
-            assert.isTrue(actual)
+            expect(
+                isEachDieValueAboveOneHundred(dieFrequencyTable)
+            )
+                .to.be.true
         })
     })
 })
