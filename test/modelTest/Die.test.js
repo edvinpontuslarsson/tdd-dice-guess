@@ -26,7 +26,7 @@ describe('Tests of Die instance', () => {
         })
     })
 
-    describe('Tests of Die.roll()', () => {
+    describe('Tests after calling Die.roll()', () => {
 
         it('die.getFaceValue() should now not be null', done => {
             const actual = getFaceValueAfterNewDieRoll()
@@ -34,15 +34,21 @@ describe('Tests of Die instance', () => {
             done()
         })
 
-        it('die.getFaceValue() should now be >= 1', done => {
-            const actual = getFaceValueAfterNewDieRoll()
-            assert.isTrue(actual >= 1)
+        it('die.getFaceValue() should now return >= 1', done => {
+            for (let x = 1; x <= 100; x++) {
+                const actual = getFaceValueAfterNewDieRoll()
+                assert.isTrue(actual >= 1)
+            }
+            
             done()
         })
 
-        it('die.getFaceValue() should now be <= 6', done => {
-            const actual = getFaceValueAfterNewDieRoll()
-            assert.isTrue(actual <= 6)
+        it('die.getFaceValue() should now return <= 6', done => {        
+            for (let x = 1; x <= 100; x++) {
+                const actual = getFaceValueAfterNewDieRoll()
+                assert.isTrue(actual <= 6)
+            }
+
             done()
         })
 
