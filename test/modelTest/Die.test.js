@@ -13,7 +13,7 @@ describe('Tests of Die instance', () => {
             done()
         })
         
-        it('new Die().faceValue should be undefined since private', done => {
+        it('new Die()._faceValue should be undefined since private', done => {
             const actual = new Die()._faceValue
             assert.isUndefined(actual)
             done()
