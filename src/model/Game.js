@@ -4,4 +4,4 @@ class Game {
   isGuessCorrect (guess) {}
 }
 
-export default Game
+module.exports = Game

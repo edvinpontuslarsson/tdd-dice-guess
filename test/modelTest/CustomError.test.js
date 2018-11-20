@@ -1,7 +1,7 @@
 'use strict'
 
-import { expect } from 'chai'
-import CustomError from '../../src/model/CustomError'
+const expect = require('chai').expect
+const CustomError = require('../../src/model/CustomError')
 
 describe('Tests of CustomError instance', () => {
   describe('Tests of custom errors', () => {

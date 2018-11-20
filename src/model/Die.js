@@ -14,4 +14,4 @@ class Die {
   }
 }
 
-export default Die
+module.exports = Die

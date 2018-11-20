@@ -1,7 +1,7 @@
 'use strict'
 
-import { expect } from 'chai'
-import Die from '../../src/model/Die'
+const expect = require('chai').expect
+const Die = require('../../src/model/Die')
 
 describe('Tests of Die instance', () => {
   describe('Tests of initial state', () => {

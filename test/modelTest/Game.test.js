@@ -1,7 +1,8 @@
 'use strict'
 
-import { expect } from 'chai'
-import Game from '../../src/model/Game'
+const expect = require('chai').expect
+const Game = require('../../src/model/Game')
+
 /*
 
 // TODO: dependency inject customError
