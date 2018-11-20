@@ -34,5 +34,20 @@ describe('Tests of CustomError instance', () => {
         expect(catchable)
             .to.be.true
     })
+
+    it('NegativeNumberError should be catchable error', () => {
+        let catchable
+
+        try {
+            throw new CustomError.NegativeNumberError()
+        } catch (error) {
+            if (error instanceof CustomError.NegativeNumberError) {
+                catchable = true
+            }
+        }
+
+        expect(catchable)
+            .to.be.true
+    })
   })
 })

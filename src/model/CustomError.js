@@ -2,7 +2,7 @@
 
 class EmptyArgumentError extends Error {}
 
-class NotAnIntError {}
+class NotAnIntError extends Error {}
 
 let NegativeNumberError
 
