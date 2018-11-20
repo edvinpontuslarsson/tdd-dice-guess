@@ -12,5 +12,12 @@ describe('Tests of CustomError instance', () => {
             )
                 .to.not.be.undefined
         })
+
+        it('new CustomError().notAnInt should be defined', () => {
+            expect(
+                new CustomError().notAnInt
+            )
+                .to.not.be.undefined
+        })
     })
 })
