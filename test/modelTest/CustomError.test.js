@@ -1,8 +1,7 @@
 'use strict'
 
 import { expect } from 'chai'
-import emptyArgumentError from '../../src/model/CustomError'
-import notAnIntError from '../../src/model/CustomError'
+import { EmptyArgumentError } from '../../src/model/CustomError'
 
 describe('Tests of CustomError instance', () => {
   describe('Tests of custom errors', () => {
@@ -10,9 +9,9 @@ describe('Tests of CustomError instance', () => {
       let catchable
       
       try {
-        throw new emptyArgumentError() 
+        throwEmptyArgumentError() 
       } catch (error) {
-        if (error instanceof emptyArgumentError) {
+        if (error instanceof EmptyArgumentError) {
             catchable = true
         }
       }
@@ -24,7 +23,7 @@ describe('Tests of CustomError instance', () => {
 })
 
 function throwEmptyArgumentError () {
-  throw new emptyArgumentError()
+  throw new EmptyArgumentError()
 }
 
 function throwNotAnIntError () {

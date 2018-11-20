@@ -1,7 +1,15 @@
 'use strict'
 
-class EmptyArgumentError {}
+class EmptyArgumentError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = this.constructor.name
+    }
+}
+
 class NotAnIntError {}
 
-export const emptyArgumentError = EmptyArgumentError
-export const notAnIntError = NotAnIntError
+module.exports = {
+    EmptyArgumentError,
+    NotAnIntError
+}
