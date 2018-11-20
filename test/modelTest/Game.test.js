@@ -9,7 +9,7 @@ import Game from '../../src/model/Game'
 describe('Tests of Game instance', () => {
 
     describe('Tests of game.isGuessCorrect()', () => {
-        
+
         it('Should throw NotAnInt exception if argument is not an integer', () => {
             const game = new Game()
             expect(
@@ -18,9 +18,9 @@ describe('Tests of Game instance', () => {
                 .to.throw()
 
             expect(
-                game.isGuessCorrect(-1) 
+                game.isGuessCorrect(-1)
             )
-        }) 
+        })
     })
 })
 

@@ -1,8 +1,7 @@
 'use strict'
 
 class Game {
-
-    isGuessCorrect(guess) {}
+  isGuessCorrect (guess) {}
 }
 
 export default Game

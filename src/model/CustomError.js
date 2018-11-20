@@ -3,10 +3,12 @@
 import customError from 'node-custom-errors'
 
 class CustomError {
-    constructor() {
-        this.emptyArgument = customError.create('emptyArgument')
-        this.notAnInt = customError.create('notAnInt')
-    }
+    
 }
 
-export default CustomError
+class EmptyArgumentError {}
+
+class NotAnIntError {}
+
+export default EmptyArgumentError
+export default NotAnIntError
