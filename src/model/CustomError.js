@@ -2,9 +2,9 @@
 
 class EmptyArgumentError extends Error {}
 
-class NotAnIntError {}
+let NotAnIntError // class NotAnIntError {}
 
-class NegativeNumberError {}
+let NegativeNumberError
 
 module.exports = {
     EmptyArgumentError,

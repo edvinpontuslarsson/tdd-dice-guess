@@ -20,6 +20,19 @@ describe('Tests of CustomError instance', () => {
         .to.be.true
     })
 
-    // it('NotAnIntError should be catchable error')
+    it('NotAnIntError should be catchable error', () => {
+        let catchable
+
+        try {
+            throw new CustomError.NotAnIntError()
+        } catch (error) {
+            if (error instanceof CustomError.NotAnIntError) {
+                catchable = true
+            }
+        }
+
+        expect(catchable)
+            .to.be.true
+    })
   })
 })
