@@ -4,7 +4,7 @@ class EmptyArgumentError extends Error {}
 
 class NotAnIntError extends Error {}
 
-let NegativeNumberError
+class NegativeNumberError extends Error {}
 
 module.exports = {
     EmptyArgumentError,
