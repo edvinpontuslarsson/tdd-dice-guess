@@ -7,12 +7,12 @@ describe('Tests of CustomError instance', () => {
   describe('Tests of custom errors', () => {
     it('EmptyArgument should be catchable error', () => {
       let catchable
-      
+
       try {
-        throw new CustomError.EmptyArgumentError() 
+        throw new CustomError.EmptyArgumentError()
       } catch (error) {
         if (error instanceof CustomError.EmptyArgumentError) {
-            catchable = true
+          catchable = true
         }
       }
 
@@ -21,33 +21,33 @@ describe('Tests of CustomError instance', () => {
     })
 
     it('NotAnIntError should be catchable error', () => {
-        let catchable
+      let catchable
 
-        try {
-            throw new CustomError.NotAnIntError()
-        } catch (error) {
-            if (error instanceof CustomError.NotAnIntError) {
-                catchable = true
-            }
+      try {
+        throw new CustomError.NotAnIntError()
+      } catch (error) {
+        if (error instanceof CustomError.NotAnIntError) {
+          catchable = true
         }
+      }
 
-        expect(catchable)
-            .to.be.true
+      expect(catchable)
+        .to.be.true
     })
 
     it('NegativeNumberError should be catchable error', () => {
-        let catchable
+      let catchable
 
-        try {
-            throw new CustomError.NegativeNumberError()
-        } catch (error) {
-            if (error instanceof CustomError.NegativeNumberError) {
-                catchable = true
-            }
+      try {
+        throw new CustomError.NegativeNumberError()
+      } catch (error) {
+        if (error instanceof CustomError.NegativeNumberError) {
+          catchable = true
         }
+      }
 
-        expect(catchable)
-            .to.be.true
+      expect(catchable)
+        .to.be.true
     })
   })
 })
