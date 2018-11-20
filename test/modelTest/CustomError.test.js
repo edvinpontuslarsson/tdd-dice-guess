@@ -1,23 +1,32 @@
 'use strict'
 
 import { expect } from 'chai'
-import EmptyArgumentError from '../../src/model/CustomError'
-import NotAnIntError from '../../src/model/CustomError'
+import emptyArgumentError from '../../src/model/CustomError'
+import notAnIntError from '../../src/model/CustomError'
 
 describe('Tests of CustomError instance', () => {
   describe('Tests of custom errors', () => {
-    it('EmptyArgument should be throwable error', done => {
-      expect(() => {
-        throwEmptyArgumentError()
-      }).to
+    it('EmptyArgument should be catchable error', () => {
+      let catchable
+      
+      try {
+        throw new emptyArgumentError() 
+      } catch (error) {
+        if (error instanceof emptyArgumentError) {
+            catchable = true
+        }
+      }
+
+      expect(catchable)
+        .to.be.true
     })
   })
 })
 
 function throwEmptyArgumentError () {
-  throw new EmptyArgumentError()
+  throw new emptyArgumentError()
 }
 
 function throwNotAnIntError () {
-  throw new NotAnIntError()
+  throw new notAnIntError()
 }
