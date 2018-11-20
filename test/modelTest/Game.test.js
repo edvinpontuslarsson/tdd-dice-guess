@@ -14,8 +14,7 @@ describe('Tests of Game instance', () => {
             const game = new Game()
             expect(
                 game.isGuessCorrect() // test with no argument
-            )
-                .to.throw()
+            ).to.throw()
 
             expect(
                 game.isGuessCorrect(-1)

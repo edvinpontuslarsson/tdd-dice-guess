@@ -8,8 +8,8 @@ describe('Tests of CustomError instance', () => {
   describe('Tests of custom errors', () => {
     it('EmptyArgument should be throwable error', done => {
       expect(() => {
-          
-      })
+        throwEmptyArgumentError()
+      }).to
     })
   })
 })

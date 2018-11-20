@@ -8,15 +8,13 @@ describe('Tests of Die instance', () => {
     it('new Die()._faceValue should be undefined since private', () => {
       expect(
         new Die()._faceValue
-      )
-        .to.be.undefined
+      ).to.be.undefined
     })
 
     it('new Die().getFaceValue() should be null', () => {
       expect(
         new Die().getFaceValue()
-      )
-        .to.be.null
+      ).to.be.null
     })
   })
 
@@ -25,8 +23,7 @@ describe('Tests of Die instance', () => {
       for (let x = 1; x <= 100; x++) {
         expect(
           getFaceValueAfterNewDieRoll()
-        )
-          .to.be.within(1, 6)
+        ).to.be.within(1, 6)
       }
     })
 
@@ -41,8 +38,7 @@ describe('Tests of Die instance', () => {
 
       expect(
         isEachDieValueAboveOneHundred(dieFrequencyTable)
-      )
-        .to.be.true
+      ).to.be.true
     })
   })
 })
