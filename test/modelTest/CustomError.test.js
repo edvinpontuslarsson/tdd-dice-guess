@@ -8,7 +8,7 @@ describe('Tests of CustomError instance', () => {
 
         it('new CustomError().emptyArgument should be defined', () => {
             expect(
-                new CustomError().emptyArgument
+                new CustomError().emptyArgument // TODO: throw here
             )
                 .to.not.be.undefined
         })
