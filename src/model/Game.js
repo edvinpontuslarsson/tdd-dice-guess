@@ -7,8 +7,8 @@ class Game {
     this.validateGuess(guess)
   }
 
-  validateGuess(guess) {
-    if (typeof guess === 'undefined') {
+  validateGuess (guess) {
+    if (!guess) {
       throw new CustomError.EmptyArgumentError()
     }
   }
