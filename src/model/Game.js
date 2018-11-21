@@ -3,10 +3,11 @@
 const CustomError = require('./CustomError')
 
 class Game {
-  constructor(die) {
-    if (!die) throw new CustomError.EmptyArgumentError()
+  constructor(Die) {
+    if (!Die) throw new CustomError.EmptyArgumentError()
 
-
+    this.firstDie = new Die()
+    this.secondDie = new Die()
   }
 
   isGuessCorrect (guess) {
