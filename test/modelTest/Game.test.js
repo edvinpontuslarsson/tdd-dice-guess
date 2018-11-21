@@ -2,26 +2,17 @@
 
 const expect = require('chai').expect
 const Game = require('../../src/model/Game')
-
-/*
-
-// TODO: dependency inject customError
+const CustomError = require('../../src/model/CustomError')
 
 describe('Tests of Game instance', () => {
 
     describe('Tests of game.isGuessCorrect()', () => {
 
-        it('Should throw NotAnInt exception if argument is not an integer', () => {
+        it('Should throw EmptyArgumentError exception if argument is given', () => {
             const game = new Game()
             expect(
                 game.isGuessCorrect() // test with no argument
-            ).to.throw()
-
-            expect(
-                game.isGuessCorrect(-1)
-            )
+            ).to.throw(CustomError.EmptyArgumentError)
         })
     })
 })
-
-*/
