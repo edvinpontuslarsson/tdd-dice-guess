@@ -21,10 +21,14 @@ describe('Tests of Game instance', () => {
       expect(Die).toHaveBeenCalledTimes(2)
     })
   })
-  describe('Tests of new Game().isGuessCorrect()', () => {
-    it('new Game().isGuessCorrect() should throw EmptyArgumentError', () => {
-      expect(() => new Game().isGuessCorrect())
+  describe('Tests of new Game(Die).isGuessCorrect()', () => {
+    it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
+      expect(() => new Game(Die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
+    })
+    it('new Game(Die).isGuessCorrect(1.5) should throw NotAnIntError', () => {
+      expect(() => new Game(Die).isGuessCorrect(1.5))
+        .toThrowError(CustomError.NotAnIntError)
     })
   })
 })
