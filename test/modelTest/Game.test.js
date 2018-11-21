@@ -8,11 +8,9 @@ describe('Tests of Game instance', () => {
 
     describe('Tests of game.isGuessCorrect()', () => {
 
-        it('Should throw EmptyArgumentError exception if argument is given', () => {
-            const game = new Game()
-            expect(
-                game.isGuessCorrect() // test with no argument
-            ).to.throw(CustomError.EmptyArgumentError)
+        it('new Game().isGuessCorrect() should throw EmptyArgumentError', () => {
+            expect(() => new Game().isGuessCorrect()
+        ).to.throw(CustomError.EmptyArgumentError)
         })
     })
 })
