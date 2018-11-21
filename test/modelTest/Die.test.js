@@ -1,6 +1,5 @@
 'use strict'
 
-const expect = require('chai').expect
 const Die = require('../../src/model/Die')
 
 describe('Tests of Die instance', () => {
@@ -8,7 +7,7 @@ describe('Tests of Die instance', () => {
     it('new Die()._faceValue should be undefined since private', () => {
       expect(
         new Die()._faceValue
-      ).to.be.undefined
+      ).toBeUndefined
     })
 
     it('new Die().getFaceValue() should be null', () => {

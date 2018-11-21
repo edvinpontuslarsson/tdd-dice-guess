@@ -10,5 +10,8 @@ describe('Tests of Game instance', () => {
       expect(() => new Game().isGuessCorrect()
       ).to.throw(CustomError.EmptyArgumentError)
     })
+    // it('new Game(dieMock) should create new dieMock instance', () => {
+        
+    // })
   })
 })

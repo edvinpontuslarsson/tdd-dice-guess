@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "babel-node index",
-    "test": "./node_modules/.bin/mocha --recursive --require @babel/register"
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "keywords": [
     "tdd",
@@ -19,17 +20,9 @@
   "author": "Edvin Larsson",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.0.0",
-    "babel-plugin-transform-private": "^0.1.3",
-    "readline-sync": "^1.4.9",
-    "sinon": "^7.1.1"
+    "readline-sync": "^1.4.9"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "jest": "^23.6.0"
   }
 }

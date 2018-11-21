@@ -2,7 +2,6 @@
 
 class Die {
   constructor () {
-    // babel plugin makes attributes starting with _ private
     this._faceValue = null
   }
 
