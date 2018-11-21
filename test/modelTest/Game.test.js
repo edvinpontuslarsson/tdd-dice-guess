@@ -39,3 +39,17 @@ describe('Tests of Game instance', () => {
     })
   })
 })
+
+function methodThrowsErrorsProperly(method) { // use in guess functions
+  expect(() => method())
+    .toThrowError(CustomError.EmptyArgumentError)
+  
+  expect(() => method(1.5))
+    .toThrowError(CustomError.NotAnIntError)
+
+  expect(() => method("5"))
+    .toThrowError(CustomError.NotAnIntError)
+
+  expect(() => method(-1))
+    .toThrowError(CustomError.NegativeNumberError)
+}
