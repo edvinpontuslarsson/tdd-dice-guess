@@ -33,5 +33,9 @@ describe('Tests of Game instance', () => {
       expect(() => new Game(Die).isGuessCorrect("5"))
         .toThrowError(CustomError.NotAnIntError)
     })
+    it('calling with -1 should throw NegativeNumberError', () => {
+      expect(() => new Game(Die).isGuessCorrect(-1))
+        .toThrowError(CustomError.NegativeNumberError)
+    })
   })
 })
