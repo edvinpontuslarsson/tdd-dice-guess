@@ -4,25 +4,20 @@ const Die = require('../../src/model/Die')
 
 describe('Tests of Die instance', () => {
   describe('Tests of initial state', () => {
-    it('new Die()._faceValue should be undefined since private', () => {
-      expect(
-        new Die()._faceValue
-      ).toBeUndefined
-    })
-
     it('new Die().getFaceValue() should be null', () => {
-      expect(
-        new Die().getFaceValue()
-      ).to.be.null
+      expect(new Die().getFaceValue())
+        .toBe(null)
     })
   })
 
   describe('Tests after calling Die.roll()', () => {
     it('die.getFaceValue() should now return a value between 1 & 6', () => {
       for (let x = 1; x <= 100; x++) {
-        expect(
-          getFaceValueAfterNewDieRoll()
-        ).to.be.within(1, 6)
+        expect(getFaceValueAfterNewDieRoll())
+          .toBeGreaterThanOrEqual(1)
+
+        expect(getFaceValueAfterNewDieRoll())
+          .toBeLessThanOrEqual(6)
       }
     })
 
@@ -35,9 +30,8 @@ describe('Tests of Die instance', () => {
         dieFrequencyTable[dieKey] += 1
       }
 
-      expect(
-        isEachDieValueAboveOneHundred(dieFrequencyTable)
-      ).to.be.true
+      expect(isEachDieValueAboveOneHundred(dieFrequencyTable))
+        .toBe(true)
     })
   })
 })

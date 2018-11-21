@@ -1,6 +1,5 @@
 'use strict'
 
-const expect = require('chai').expect
 const CustomError = require('../../src/model/CustomError')
 
 describe('Tests of CustomError instance', () => {
@@ -16,8 +15,7 @@ describe('Tests of CustomError instance', () => {
         }
       }
 
-      expect(catchable)
-        .to.be.true
+      expect(catchable).toBe(true)
     })
 
     it('NotAnIntError should be catchable error', () => {
@@ -31,8 +29,7 @@ describe('Tests of CustomError instance', () => {
         }
       }
 
-      expect(catchable)
-        .to.be.true
+      expect(catchable).toBe(true)
     })
 
     it('NegativeNumberError should be catchable error', () => {
@@ -46,8 +43,7 @@ describe('Tests of CustomError instance', () => {
         }
       }
 
-      expect(catchable)
-        .to.be.true
+      expect(catchable).toBe(true)
     })
   })
 })
