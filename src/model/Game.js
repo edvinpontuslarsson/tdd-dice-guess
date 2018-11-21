@@ -16,6 +16,7 @@ class Game {
 
   validateGuess (guess) {
     if (!guess) throw new CustomError.EmptyArgumentError()
+    if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
   }
 }
 
