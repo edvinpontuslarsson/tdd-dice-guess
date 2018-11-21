@@ -26,8 +26,11 @@ describe('Tests of Game instance', () => {
       expect(() => new Game(Die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
     })
-    it('new Game(Die).isGuessCorrect(1.5) should throw NotAnIntError', () => {
+    it('calling with 1.5 or "5" should throw NotAnIntError', () => {
       expect(() => new Game(Die).isGuessCorrect(1.5))
+        .toThrowError(CustomError.NotAnIntError)
+
+      expect(() => new Game(Die).isGuessCorrect("5"))
         .toThrowError(CustomError.NotAnIntError)
     })
   })
