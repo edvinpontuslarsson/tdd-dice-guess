@@ -31,8 +31,6 @@ describe('Tests of Game instance', () => {
 
       expect(mockRollAndGetFaceValue).toHaveBeenCalled()
     })
-
-    // just create own dieStub for returns
   })
 
   describe('Tests of isGuessCorrect', () => {
