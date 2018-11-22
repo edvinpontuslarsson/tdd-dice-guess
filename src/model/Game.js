@@ -9,7 +9,7 @@ class Game {
   }
 
   rollNewDie() {
-    const die = new this.Die()
+    const dieFaceValue = new this.Die().rollAndGetFaceValue()
   }
 
   isGuessCorrect(guess) {

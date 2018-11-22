@@ -27,11 +27,11 @@ describe('Tests of Game instance', () => {
       const game = new Game(Die).rollNewDie()
 
       const mockDie = Die.mock.instances[0]
-      const mockRollAndGetFaceValue = mockDie.rollAndGetFaceValue()
+      const mockRollAndGetFaceValue = mockDie.rollAndGetFaceValue
 
       expect(mockRollAndGetFaceValue).toHaveBeenCalled()
     })
-    
+
     // just create own dieStub for returns
   })
 
