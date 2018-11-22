@@ -2,14 +2,20 @@
 
 const CustomError = require('./CustomError')
 
+let totalDiceValue = 0
+
 class Game {
   constructor(Die) {
     if (!Die) throw new CustomError.EmptyArgumentError()
     this.Die = Die
   }
 
+  getTotalDiceValue() {
+    return totalDiceValue
+  }
+
   rollNewDie() {
-    const dieFaceValue = new this.Die().rollAndGetFaceValue()
+    totalDiceValue = new this.Die().rollAndGetFaceValue()
   }
 
   isGuessCorrect(guess) {
