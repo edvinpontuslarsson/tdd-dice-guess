@@ -31,6 +31,7 @@ describe('Tests of Game instance', () => {
 
       expect(mockRollAndGetFaceValue).toHaveBeenCalled()
     })
+    
   })
 
   describe('Tests of isGuessCorrect', () => {
