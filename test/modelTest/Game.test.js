@@ -3,6 +3,7 @@
 const Game = require('../../src/model/Game')
 const CustomError = require('../../src/model/CustomError')
 const Die = require('../../src/model/Die')
+const DieStub = require('./DieStub')
 
 jest.mock('../../src/model/Die') // makes Die mock instance
 
@@ -31,7 +32,18 @@ describe('Tests of Game instance', () => {
 
       expect(mockRollAndGetFaceValue).toHaveBeenCalled()
     })
-    
+  })
+
+  describe('Tests of rollNewDie and getTotalDiceValue', () => {
+    it('Should result in correct number every time, based on stub', () => {
+      const game = new Game(DieStub)
+
+      for (let x = 1; x < 5; x += 1) {
+        game.rollNewDie()
+        const value = game.getTotalDiceValue()
+        expect(value).toBe(x)
+      }
+    })
   })
 
   describe('Tests of isGuessCorrect', () => {
@@ -49,13 +61,6 @@ describe('Tests of Game instance', () => {
     it('calling with -1 should throw NegativeNumberError', () => {
       expect(() => new Game(Die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
-    })
-  })
-  
-  describe('Tests of isGuessTooLow', () => {
-    it("isGuessTooLow should throw NoGuessError if isGuessCorrect hasn't been called with int", () => {
-      expect(() => new Game(Die).isGuessTooLow())
-        .toThrowError(CustomError.NoGuessError)
     })
   })
 })
