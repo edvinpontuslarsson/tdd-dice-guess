@@ -11,7 +11,7 @@ beforeEach(() => {
 })
 
 describe('Tests of Game instance', () => {
-  describe('Tests of new Game()', () => {
+  describe('Tests of Game constructor', () => {
     it('new Game() should throw EmptyArgumentError', () => {
       expect(() => new Game())
         .toThrowError(CustomError.EmptyArgumentError)
@@ -20,8 +20,9 @@ describe('Tests of Game instance', () => {
       const game = new Game(Die)
       expect(Die).toHaveBeenCalledTimes(2)
     })
+    // also test that roll's been called twice
   })
-  describe('Tests of new Game(Die).isGuessCorrect()', () => {
+  describe('Tests of isGuessCorrect', () => {
     it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
       expect(() => new Game(Die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
@@ -37,5 +38,11 @@ describe('Tests of Game instance', () => {
       expect(() => new Game(Die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
     })
-  })
+  })/*
+  describe('Tests of isGuessTooLow', () => {
+    it("Should throw NoGuessError if isGuessCorrect hasn't been called with int", () => {
+      expect(() => new Game(Die).isGuessTooLow())
+        .toThrowError // wait, have to create and test error first
+    })
+  })*/
 })
