@@ -10,8 +10,12 @@ class Game {
     this.secondDie = new Die()
   }
 
-  isGuessCorrect (guess) {
+  isGuessCorrect(guess) {
     this.validateGuess(guess)
+  }
+
+  isGuessTooLow() {
+    if (!this.guess) throw new CustomError.NoGuessError()
   }
 
   validateGuess (guess) {
