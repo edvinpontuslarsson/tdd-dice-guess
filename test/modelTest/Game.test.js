@@ -38,11 +38,11 @@ describe('Tests of Game instance', () => {
       expect(() => new Game(Die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
     })
-  })/*
+  })
   describe('Tests of isGuessTooLow', () => {
-    it("Should throw NoGuessError if isGuessCorrect hasn't been called with int", () => {
+    it("isGuessTooLow should throw NoGuessError if isGuessCorrect hasn't been called with int", () => {
       expect(() => new Game(Die).isGuessTooLow())
-        .toThrowError // wait, have to create and test error first
+        .toThrowError(CustomError.NoGuessError)
     })
-  })*/
+  })
 })
