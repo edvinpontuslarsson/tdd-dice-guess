@@ -3,20 +3,13 @@
 const Die = require('../../src/model/Die')
 
 describe('Tests of Die instance', () => {
-  describe('Tests of initial state', () => {
-    it('new Die().getFaceValue() should be null', () => {
-      expect(new Die().getFaceValue())
-        .toBe(null)
-    })
-  })
-
-  describe('Tests after calling Die.roll()', () => {
-    it('die.getFaceValue() should now return a value between 1 & 6', () => {
+  describe('Tests of rollAndGetFaceValue()', () => {
+    it('rollAndGetFaceValue() should return a value between 1 & 6', () => {
       for (let x = 1; x <= 100; x++) {
-        expect(getFaceValueAfterNewDieRoll())
+        expect(new Die().rollAndGetFaceValue())
           .toBeGreaterThanOrEqual(1)
 
-        expect(getFaceValueAfterNewDieRoll())
+        expect(new Die().rollAndGetFaceValue())
           .toBeLessThanOrEqual(6)
       }
     })
@@ -25,7 +18,7 @@ describe('Tests of Die instance', () => {
       const dieFrequencyTable = {}
 
       for (let roll = 1; roll <= 1000; roll++) {
-        const dieValue = getFaceValueAfterNewDieRoll()
+        const dieValue = new Die().rollAndGetFaceValue()
         const dieKey = dieValue.toString()
         dieFrequencyTable[dieKey] += 1
       }
@@ -35,12 +28,6 @@ describe('Tests of Die instance', () => {
     })
   })
 })
-
-function getFaceValueAfterNewDieRoll () {
-  const die = new Die()
-  die.roll()
-  return die.getFaceValue()
-}
 
 function isEachDieValueAboveOneHundred (dieFrequencyTable) {
   let answer = typeof dieFrequencyTable === 'object'
