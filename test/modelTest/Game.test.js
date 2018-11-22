@@ -22,23 +22,16 @@ describe('Tests of Game instance', () => {
     it('rollNewDie() should construct Die', () => {
       const game = new Game(Die).rollNewDie()
       expect(Die).toHaveBeenCalled()
-    })/*
-    it('rollNewDie() should call Die.roll()', () => {
+    })
+    it('rollNewDie() should call Die.rollAndGetFaceValue()', () => {
       const game = new Game(Die).rollNewDie()
 
       const mockDie = Die.mock.instances[0]
-      const mockRoll = mockDie.roll
+      const mockRollAndGetFaceValue = mockDie.rollAndGetFaceValue()
 
-      expect(mockRoll).toHaveBeenCalled()
-    })*//*
-    it('rollNewDie() should call Die.getFaceValue()', () => {
-      const game = new Game(Die).rollNewDie()
-
-      const mockDie = Die.mock.instances[0]
-      const mockGetFaceValue = mockDie.getFaceValue
-
-      expect(mockGetFaceValue).toHaveBeenCalled()
-    })*/
+      expect(mockRollAndGetFaceValue).toHaveBeenCalled()
+    })
+    
     // just create own dieStub for returns
   })
 
