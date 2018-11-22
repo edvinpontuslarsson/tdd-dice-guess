@@ -16,10 +16,6 @@ describe('Tests of Game instance', () => {
       expect(() => new Game())
         .toThrowError(CustomError.EmptyArgumentError)
     })/*
-    it('new Game(Die) should create 2 dice', () => {
-      const game = new Game(Die)
-      expect(Die).toHaveBeenCalledTimes(2)
-    })
     it('new Game(Die) should call new Die.roll()', () => {
       const game = new Game(Die)
       
@@ -34,6 +30,14 @@ describe('Tests of Game instance', () => {
     it('rollNewDie() should construct Die', () => {
       const game = new Game(Die).rollNewDie()
       expect(Die).toHaveBeenCalled()
+    })
+    it('rollNewDie() should call new Die.roll()', () => {
+      const game = new Game(Die).rollNewDie()
+
+      const mockDie = Die.mock.instances[0]
+      const mockRoll = mockDie.roll
+
+      expect(mockRoll).toHaveBeenCalledTimes(1)
     })
   })
 
