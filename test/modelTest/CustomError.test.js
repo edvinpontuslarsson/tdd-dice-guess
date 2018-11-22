@@ -45,19 +45,5 @@ describe('Tests of CustomError instance', () => {
 
       expect(catchable).toBe(true)
     })
-
-    it('NoGuessError should be catchable error', () => {
-      let catchable
-
-      try {
-        throw new CustomError.NoGuessError()
-      } catch (error) {
-        if (error instanceof CustomError.NoGuessError) {
-          catchable = true
-        }
-      }
-
-      expect(catchable).toBe(true)
-    })
   })
 })
