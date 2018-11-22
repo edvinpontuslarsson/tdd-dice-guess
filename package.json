@@ -9,7 +9,8 @@
   "scripts": {
     "start": "babel-node index",
     "test": "jest",
-    "watch": "jest --watch *.js"
+    "watch": "jest --watch *.js",
+    "coverage": "jest --coverage"
   },
   "keywords": [
     "tdd",

@@ -8,6 +8,9 @@ class Game {
 
     this.firstDie = new Die()
     this.secondDie = new Die()
+
+    this.firstDie.roll()
+    this.secondDie.roll()
   }
 
   isGuessCorrect(guess) {

@@ -20,9 +20,13 @@ describe('Tests of Game instance', () => {
       const game = new Game(Die)
       expect(Die).toHaveBeenCalledTimes(2)
     })
-    it('new Game(Die) should call new Die.roll() twice', () => {
+    it('new Game(Die) should call new Die.roll()', () => {
       const game = new Game(Die)
-      expect(new Die().roll).toHaveBeenCalledTimes(2)
+      
+      const mockDie = Die.mock.instances[1]
+      const mockRoll = mockDie.roll
+
+      expect(mockRoll).toHaveBeenCalledTimes(1)
     })
   })
   describe('Tests of isGuessCorrect', () => {
