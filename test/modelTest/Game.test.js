@@ -29,12 +29,14 @@ describe('Tests of Game instance', () => {
       expect(mockRoll).toHaveBeenCalledTimes(1)
     })*/
   })
+
   describe('Tests of rollNewDie', () => {
     it('rollNewDie() should construct Die', () => {
-      const game = new Game(Die)
+      const game = new Game(Die).rollNewDie()
       expect(Die).toHaveBeenCalled()
     })
   })
+
   describe('Tests of isGuessCorrect', () => {
     it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
       expect(() => new Game(Die).isGuessCorrect())
@@ -52,6 +54,7 @@ describe('Tests of Game instance', () => {
         .toThrowError(CustomError.NegativeNumberError)
     })
   })
+  
   describe('Tests of isGuessTooLow', () => {
     it("isGuessTooLow should throw NoGuessError if isGuessCorrect hasn't been called with int", () => {
       expect(() => new Game(Die).isGuessTooLow())

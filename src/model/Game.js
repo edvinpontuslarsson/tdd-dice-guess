@@ -8,6 +8,10 @@ class Game {
     this.Die = Die
   }
 
+  rollNewDie() {
+    const die = new this.Die()
+  }
+
   isGuessCorrect(guess) {
     this.validateGuess(guess)
   }
