@@ -15,15 +15,7 @@ describe('Tests of Game instance', () => {
     it('new Game() should throw EmptyArgumentError', () => {
       expect(() => new Game())
         .toThrowError(CustomError.EmptyArgumentError)
-    })/*
-    it('new Game(Die) should call new Die.roll()', () => {
-      const game = new Game(Die)
-      
-      const mockDie = Die.mock.instances[1]
-      const mockRoll = mockDie.roll
-
-      expect(mockRoll).toHaveBeenCalledTimes(1)
-    })*/
+    })
   })
 
   describe('Tests of rollNewDie', () => {
@@ -31,14 +23,23 @@ describe('Tests of Game instance', () => {
       const game = new Game(Die).rollNewDie()
       expect(Die).toHaveBeenCalled()
     })
-    it('rollNewDie() should call new Die.roll()', () => {
+    it('rollNewDie() should call Die.roll()', () => {
       const game = new Game(Die).rollNewDie()
 
       const mockDie = Die.mock.instances[0]
       const mockRoll = mockDie.roll
 
-      expect(mockRoll).toHaveBeenCalledTimes(1)
+      expect(mockRoll).toHaveBeenCalled()
     })
+    it('rollNewDie() should call Die.getFaceValue()', () => {
+      const game = new Game(Die).rollNewDie()
+
+      const mockDie = Die.mock.instances[0]
+      const mockGetFaceValue = mockDie.getFaceValue
+
+      expect(mockGetFaceValue).toHaveBeenCalled()
+    })
+    // just create own dieStub for returns
   })
 
   describe('Tests of isGuessCorrect', () => {
