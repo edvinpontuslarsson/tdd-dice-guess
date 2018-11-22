@@ -2,7 +2,7 @@
 
 const Game = require('../../src/model/Game')
 const CustomError = require('../../src/model/CustomError')
-const Die = require('../../src/model/Die')
+let Die /*, { mockRoll }*/ = require('../../src/model/Die')
 
 jest.mock('../../src/model/Die') // makes Die mock instance
 
@@ -19,8 +19,11 @@ describe('Tests of Game instance', () => {
     it('new Game(Die) should create 2 dice', () => {
       const game = new Game(Die)
       expect(Die).toHaveBeenCalledTimes(2)
-    })
-    // also test that roll's been called twice
+    })/*
+    it('new Game(Die) should call new Die.roll() twice', () => {
+      const game = new Game(Die)
+      expect(mockRoll).toHaveBeenCalledTimes(2)
+    })*/
   })
   describe('Tests of isGuessCorrect', () => {
     it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
