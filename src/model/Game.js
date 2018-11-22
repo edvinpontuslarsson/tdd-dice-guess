@@ -10,6 +10,7 @@ class Game {
 
   rollNewDie() {
     const die = new this.Die()
+    die.roll()
   }
 
   isGuessCorrect(guess) {
