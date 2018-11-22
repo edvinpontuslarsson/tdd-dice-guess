@@ -15,7 +15,7 @@ describe('Tests of Game instance', () => {
     it('new Game() should throw EmptyArgumentError', () => {
       expect(() => new Game())
         .toThrowError(CustomError.EmptyArgumentError)
-    })
+    })/*
     it('new Game(Die) should create 2 dice', () => {
       const game = new Game(Die)
       expect(Die).toHaveBeenCalledTimes(2)
@@ -27,7 +27,7 @@ describe('Tests of Game instance', () => {
       const mockRoll = mockDie.roll
 
       expect(mockRoll).toHaveBeenCalledTimes(1)
-    })
+    })*/
   })
   describe('Tests of isGuessCorrect', () => {
     it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {

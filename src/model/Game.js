@@ -5,20 +5,11 @@ const CustomError = require('./CustomError')
 class Game {
   constructor(Die) {
     if (!Die) throw new CustomError.EmptyArgumentError()
-
-    this.firstDie = new Die()
-    this.secondDie = new Die()
-
-    this.firstDie.roll()
-    this.secondDie.roll()
+    this.Die = Die
   }
 
   isGuessCorrect(guess) {
     this.validateGuess(guess)
-  }
-
-  isGuessTooLow() {
-    if (!this.guess) throw new CustomError.NoGuessError()
   }
 
   validateGuess (guess) {
