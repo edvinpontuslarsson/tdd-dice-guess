@@ -21,35 +21,21 @@ describe('Tests of Game instance', () => {
       expect(Die).toHaveBeenCalledTimes(2)
     })
   })
-  describe('Tests of new Game(Die).validateGuess()', () => {
-    it('new Game(Die).validateGuess() should throw EmptyArgumentError', () => {
-      expect(() => new Game(Die).validateGuess())
+  describe('Tests of new Game(Die).isGuessCorrect()', () => {
+    it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
+      expect(() => new Game(Die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
     })
     it('calling with 1.5 or "5" should throw NotAnIntError', () => {
-      expect(() => new Game(Die).validateGuess(1.5))
+      expect(() => new Game(Die).isGuessCorrect(1.5))
         .toThrowError(CustomError.NotAnIntError)
 
-      expect(() => new Game(Die).validateGuess("5"))
+      expect(() => new Game(Die).isGuessCorrect("5"))
         .toThrowError(CustomError.NotAnIntError)
     })
     it('calling with -1 should throw NegativeNumberError', () => {
-      expect(() => new Game(Die).validateGuess(-1))
+      expect(() => new Game(Die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
     })
   })
 })
-
-function methodThrowsErrorsProperly(method) { // use in guess functions
-  expect(() => method())
-    .toThrowError(CustomError.EmptyArgumentError)
-  
-  expect(() => method(1.5))
-    .toThrowError(CustomError.NotAnIntError)
-
-  expect(() => method("5"))
-    .toThrowError(CustomError.NotAnIntError)
-
-  expect(() => method(-1))
-    .toThrowError(CustomError.NegativeNumberError)
-}
