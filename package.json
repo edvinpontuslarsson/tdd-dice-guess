@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "babel-node index",
+    "start": "node index",
     "test": "jest",
     "watch": "jest --watch *.js",
     "coverage": "jest --coverage"
@@ -15,7 +15,6 @@
   "keywords": [
     "tdd",
     "JavaScript",
-    "babel",
     "dice-guess"
   ],
   "author": "Edvin Larsson",
