@@ -72,7 +72,16 @@ describe('Tests of Game instance', () => {
       expect(game.isGuessCorrect(2)).toBe(false)
     })
 
-    // isGuessCorrect should also reset totalDiceValue
+    it('isGuessCorrect should reset total dice value for next round', () => {
+      resetDieStubFaceValue()
+      const game = new Game(DieStub)
+      
+      game.rollNewDie()
+      expect(game.getTotalDiceValue()).toBe(1)
+      expect(game.isGuessCorrect(1)).toBe(true)
+
+      expect(game.getTotalDiceValue()).toBe(0)
+    })
   })
 
   describe('Tests that isGuessCorrect throws errors correctly', () => {
