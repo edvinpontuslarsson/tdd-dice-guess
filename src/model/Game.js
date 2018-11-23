@@ -19,6 +19,8 @@ class Game {
       return guess === totalDiceValue
     }
 
+    this.resetTotalDiceValue = () => { totalDiceValue = 0 }
+
     this.validateGuess = guess => {
       if (!guess) throw new CustomError.EmptyArgumentError()
       if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
