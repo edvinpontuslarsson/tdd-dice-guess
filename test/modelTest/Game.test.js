@@ -102,7 +102,7 @@ describe('Tests of Game instance', () => {
     })
   })
 
-  describe('Tests of resetTotalDiceValue', () => {
+  describe('Tests of resetGame', () => {
     it('should reset total dice value', () => {
       resetDieStubFaceValue()
       const game = new Game(DieStub)
@@ -119,5 +119,12 @@ describe('Tests of Game instance', () => {
     })
   })
 
-  // it('should reset rolledDiceAmount')
+  it('should reset rolledDiceAmount', () => {
+    const game = new Game(Die)
+    game.rollNewDie()
+
+    game.resetGame()
+
+    expect(game.getRolledDiceAmount()).toBe(0)
+  })
 })
