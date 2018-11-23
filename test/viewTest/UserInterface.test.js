@@ -1,18 +1,26 @@
 'use strict'
 
-const UI = require('../../src/view/UserInterface')
+const UserInterface = require('../../src/view/UserInterface')
 const mockConsole = require('jest-mock-console').default
+const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 
 // start with welcome message
 describe('Tests of UserInterface', () => {
 
+    describe('Test of UserInterface constructor', () => {
+        it('new UserInterface() should throw EmptyArgumentError', () => {
+            expect(() => new UserInterface())
+                .toThrowError(CustomError.EmptyArgumentError)
+        })
+    })
+    
     describe('Test of displayRolledDiceAmount', () => {
         it('Looping should result in correct result every time', () => {
             const restoreConsole = mockConsole()
             const game = new Game(new Die())
-            const ui = new UI(game)
+            const ui = new UserInterface(game)
 
             for(let amount = 1; amount < 5; amount += 1) {
                 game.rollNewDie()
@@ -31,7 +39,7 @@ describe('Tests of UserInterface', () => {
             const restoreConsole = mockConsole()
             const game = new Game(Die)
 
-            new UI(game).displayInstructions()
+            new UserInterface(game).displayInstructions()
             
             expect(console.log).toHaveBeenCalledWith(
                 'Enter "r" to roll another die or enter an integer to guess total dice value'
