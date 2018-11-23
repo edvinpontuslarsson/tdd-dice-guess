@@ -56,8 +56,8 @@ describe('Tests of UserInterface', () => {
 
     describe('Test of getUserInput', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
-            const readline = new ReadlineSyncStub()
             const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
 
             const ui = new UserInterface(game, readline)
             ui.getUserInput()
@@ -69,7 +69,15 @@ describe('Tests of UserInterface', () => {
                 .toHaveBeenCalledWith('\tWhat do you want to do?: ')
         })
 
-        // then test that returns correct
+        it('Should return 1', () => {
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+
+            const ui = new UserInterface(game, readline)
+            const actual = ui.getUserInput()
+
+            expect(actual).toBe(1)
+        })
     })
 
     describe('Test of displayCorrectGuess', () => {
