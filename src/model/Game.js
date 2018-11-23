@@ -17,6 +17,7 @@ class Game {
 
   isGuessCorrect(guess) {
     this.validateGuess(guess)
+    return true
   }
 
   validateGuess (guess) {
