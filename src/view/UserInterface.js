@@ -8,6 +8,9 @@ class UserInterface {
 
         let userInput
 
+        const getUserInput = () => 
+            readline.question('\tWhat do you want to do?: ')
+
         this.displayRolledDiceAmount = () => {
             const amount = game.getRolledDiceAmount()
             console.log(`Amount of dice rolled: ${amount}`)
@@ -21,11 +24,10 @@ class UserInterface {
         }
 
         this.doesUserWantToRollNewDie = () => {
-            // how should I test this?
-            // if(!userInput) userInput = this.getUserInput() // see below, make getUserInput private
+            // hmm, this line is not really tested
+            if(!userInput) userInput = getUserInput()
 
-            // Warning! getUserInput stops and listens, change this implementation
-            return this.getUserInput().toLowerCase() === 'r'
+            return userInput.toLowerCase() === 'r'
         }
 
         this.displayCorrectGuess = () => {
@@ -38,10 +40,6 @@ class UserInterface {
                 `Wrong! The total dice value was ${value}`
             )
         }
-
-        // should be private
-        this.getUserInput = () => 
-            readline.question('\tWhat do you want to do?: ')
     }
 }
 
