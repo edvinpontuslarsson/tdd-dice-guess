@@ -17,7 +17,7 @@ class Game {
 
   isGuessCorrect(guess) {
     this.validateGuess(guess)
-    return true
+    return guess === this.getTotalDiceValue()
   }
 
   validateGuess (guess) {

@@ -3,7 +3,9 @@
 const Game = require('../../src/model/Game')
 const CustomError = require('../../src/model/CustomError')
 const Die = require('../../src/model/Die')
-const DieStub = require('./DieStub')
+const DieStubModule = require('./DieStub')
+const DieStub = DieStubModule.DieStub
+const resetDieStubFaceValue = DieStubModule.resetFaceValue
 
 jest.mock('../../src/model/Die') // makes Die mock instance
 
@@ -36,6 +38,7 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of rollNewDie and getTotalDiceValue', () => {
     it('Should result in correct number every time, based on stub', () => {
+      resetDieStubFaceValue()
       const game = new Game(DieStub)
 
       let sum = 0
@@ -51,11 +54,12 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of isGuessCorrect', () => {
     it('looping isGuessCorrect(x) should return true every time', () => {
+      resetDieStubFaceValue()
       const game = new Game(DieStub)
-
-      let sum = 0 
-
-      for (let x = 1; x < 5; x+= 1) {
+      
+      let sum = 0
+      
+      for (let x = 1; x < 5; x += 1) {
         sum += x
         game.rollNewDie()
         expect(game.isGuessCorrect(sum)).toBe(true)
@@ -63,6 +67,7 @@ describe('Tests of Game instance', () => {
     })
 
     it('isGuessCorrect(2) should return false', () => {
+      resetDieStubFaceValue()
       const game = new Game(DieStub)
       expect(game.isGuessCorrect(2)).toBe(false)
     })

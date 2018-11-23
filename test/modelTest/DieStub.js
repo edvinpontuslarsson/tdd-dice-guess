@@ -9,4 +9,11 @@ class DieStub {
     }
 }
 
-module.exports = DieStub
+const resetFaceValue = () => {
+    faceValue = 0
+}
+
+module.exports = {
+    DieStub,
+    resetFaceValue
+}
