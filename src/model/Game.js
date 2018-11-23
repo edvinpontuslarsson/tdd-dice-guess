@@ -6,11 +6,11 @@ class Game {
   constructor(Die) {
     if (!Die) throw new CustomError.EmptyArgumentError()
 
-    let totalDiceValue = 0
     let rolledDiceAmount = 0
+    let totalDiceValue = 0
 
-    this.getTotalDiceValue = () => totalDiceValue
     this.getRolledDiceAmount = () => rolledDiceAmount
+    this.getTotalDiceValue = () => totalDiceValue
     
     this.rollNewDie = () => {
       rolledDiceAmount += 1
