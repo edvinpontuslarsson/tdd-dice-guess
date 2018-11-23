@@ -38,10 +38,13 @@ describe('Tests of Game instance', () => {
     it('Should result in correct number every time, based on stub', () => {
       const game = new Game(DieStub)
 
+      let sum = 0
+
       for (let x = 1; x < 5; x += 1) {
+        sum += x
         game.rollNewDie()
         const value = game.getTotalDiceValue()
-        expect(value).toBe(x)
+        expect(value).toBe(sum)
       }
     })
   })
