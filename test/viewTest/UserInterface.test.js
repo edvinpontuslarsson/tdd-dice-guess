@@ -11,7 +11,7 @@ describe('Tests of UserInterface', () => {
     describe('Test of displayRolledDiceAmount', () => {
         it('Looping should result in correct result every time', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(Die)
+            const game = new Game(new Die())
             const ui = new UI(game)
 
             for(let amount = 1; amount < 5; amount += 1) {

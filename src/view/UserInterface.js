@@ -1,8 +1,11 @@
 'use strict'
 
 class UserInterface {
-    constructor (a_game) {
-        
+    constructor (game) {
+        this.displayRolledDiceAmount = () => {
+            const amount = game.getRolledDiceAmount()
+            console.log(`Amount of dice rolled: ${amount}`)
+        }
     }
 
     displayInstructions() {
