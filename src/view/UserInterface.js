@@ -16,6 +16,8 @@ class UserInterface {
                 'Enter "r" to roll another die or enter an integer to guess total dice value'
             )
         }
+
+        this.displayCorrectGuess = () => { console.log('Correct! Congratulations!') }
     }
 }
 
