@@ -2,9 +2,16 @@
 
 const UserInterface = require('../../src/view/UserInterface')
 const mockConsole = require('jest-mock-console').default
+const ReadlineSyncStub = require('./ReadlineSyncStub')
 const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
+
+jest.mock('./ReadlineSyncStub')
+
+beforeEach(() => {
+    ReadlineSyncStub.mockClear()
+})
 
 describe('Tests of UserInterface', () => {
 
@@ -36,7 +43,7 @@ describe('Tests of UserInterface', () => {
     describe('Test of displayInstructions', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(Die)
+            const game = new Game(new Die())
 
             new UserInterface(game).displayInstructions()
             
@@ -47,10 +54,26 @@ describe('Tests of UserInterface', () => {
         })
     })
 
+    describe('Test of getUserInput', () => {
+        it('Should call ReadlineSyncStub.question with correct question', () => {
+            const readline = new ReadlineSyncStub()
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readline)
+
+            const mockReadline = ReadlineSyncStub.mock.instances[0]
+            const mockQuestion = mockReadline.question
+
+            expect(mockQuestion)
+                .toHaveBeenCalledWith('\tWhat do you want to do?: ')
+        })
+
+        // then test that returns correct
+    })
+
     describe('Test of displayCorrectGuess', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(Die)
+            const game = new Game(new Die())
 
             new UserInterface(game).displayCorrectGuess()
 

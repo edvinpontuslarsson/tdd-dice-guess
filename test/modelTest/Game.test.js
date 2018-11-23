@@ -7,7 +7,7 @@ const DieStubModule = require('./DieStub')
 const DieStub = DieStubModule.DieStub
 const resetDieStubFaceValue = DieStubModule.resetFaceValue
 
-jest.mock('../../src/model/Die') // makes Die mock instance
+jest.mock('../../src/model/Die')
 
 beforeEach(() => {
   Die.mockClear()
