@@ -3,7 +3,7 @@
 const CustomError = require('../../src/model/CustomError')
 
 class UserInterface {
-    constructor (game) {
+    constructor (game, readline) {
         if(!game) throw new CustomError.EmptyArgumentError()
 
         this.displayRolledDiceAmount = () => {

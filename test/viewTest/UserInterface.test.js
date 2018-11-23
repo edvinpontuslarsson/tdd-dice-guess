@@ -58,7 +58,9 @@ describe('Tests of UserInterface', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const readline = new ReadlineSyncStub()
             const game = new Game(new Die())
+
             const ui = new UserInterface(game, readline)
+            ui.getUserInput()
 
             const mockReadline = ReadlineSyncStub.mock.instances[0]
             const mockQuestion = mockReadline.question
