@@ -47,4 +47,16 @@ describe('Tests of UserInterface', () => {
             restoreConsole()
         })
     })
+
+    describe('Test of displayCorrectGuess', () => {
+        it('Should call console.log with correct message', () => {
+            const restoreConsole = mockConsole()
+            const game = new Game(Die)
+
+            new UserInterface(game).displayCorrectGuess()
+
+            expect(console.log).toHaveBeenCalledWith('Correct! Congratulations!')
+            restoreConsole()
+        })
+    })
 })
