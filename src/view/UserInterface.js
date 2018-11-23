@@ -6,6 +6,8 @@ class UserInterface {
     constructor (game, readline) {
         if(!game) throw new CustomError.EmptyArgumentError()
 
+        let userInput
+
         this.displayRolledDiceAmount = () => {
             const amount = game.getRolledDiceAmount()
             console.log(`Amount of dice rolled: ${amount}`)
@@ -18,8 +20,13 @@ class UserInterface {
             )
         }
 
-        this.getUserInput = () => 
-            readline.question('\tWhat do you want to do?: ')
+        this.doesUserWantToRollNewDie = () => {
+            // how should I test this?
+            // if(!userInput) userInput = this.getUserInput() // see below, make getUserInput private
+
+            // Warning! getUserInput stops and listens, change this implementation
+            return this.getUserInput() === 'r'
+        }
 
         this.displayCorrectGuess = () => {
             console.log('Correct! Congratulations!')
@@ -31,6 +38,10 @@ class UserInterface {
                 `Wrong! The total dice value was ${value}`
             )
         }
+
+        // should be private
+        this.getUserInput = () => 
+            readline.question('\tWhat do you want to do?: ')
     }
 }
 
