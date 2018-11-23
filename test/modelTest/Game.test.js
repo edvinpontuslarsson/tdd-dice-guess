@@ -38,8 +38,10 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of getRolledDiceAmount', () => {
     it('looping getRolledDiceAmount should return correct amount every time', () => {
+      const game = new Game(Die)
+
       for (let amount = 1; amount < 5; amount += 1) {
-        new Game(Die).rollNewDie()
+        game.rollNewDie()
         expect(game.getRolledDiceAmount()).toBe(amount)
       }
     })

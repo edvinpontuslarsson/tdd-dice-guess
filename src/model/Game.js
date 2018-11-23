@@ -7,10 +7,13 @@ class Game {
     if (!Die) throw new CustomError.EmptyArgumentError()
 
     let totalDiceValue = 0
+    let rolledDiceAmount = 0
 
     this.getTotalDiceValue = () => totalDiceValue
+    this.getRolledDiceAmount = () => rolledDiceAmount
     
     this.rollNewDie = () => {
+      rolledDiceAmount += 1
       totalDiceValue += new Die().rollAndGetFaceValue()
     }
 
