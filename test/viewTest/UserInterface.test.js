@@ -74,6 +74,8 @@ describe('Tests of UserInterface', () => {
     describe('Test of displayIncorrectGuess', () => {
         it('Should call console.log with correct message', () => {
             // base on die mock
+
+            const game = new Game(new Die())
         })
     })
 

@@ -7,7 +7,7 @@ class ReadlineSyncStub {
         this.getAskedQuestion = () =>
             askedQuestion
 
-        this.question = (question) => {
+        this.question = question => {
             askedQuestion = question
             return 2
         }
