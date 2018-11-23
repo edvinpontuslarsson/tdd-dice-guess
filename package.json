@@ -23,6 +23,7 @@
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "jest-mock-console": "^0.4.0"
   }
 }

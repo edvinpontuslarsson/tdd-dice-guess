@@ -14,6 +14,7 @@ beforeEach(() => {
 })
 
 describe('Tests of Game instance', () => {
+  
   describe('Tests of Game constructor', () => {
     it('new Game() should throw EmptyArgumentError', () => {
       expect(() => new Game())
