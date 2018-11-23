@@ -2,13 +2,13 @@
 
 class ReadlineSyncStub {
     constructor() {
-        let hasQuestionBeenCalled
+        let askedQuestion
 
-        this.hasQuestionBeenCalled = () =>
-            hasQuestionBeenCalled
+        this.getAskedQuestion = () =>
+            askedQuestion
 
-        this.question = () => {
-            hasQuestionBeenCalled = true
+        this.question = (question) => {
+            askedQuestion = question
             return 2
         }
     }

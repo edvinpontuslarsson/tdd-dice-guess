@@ -56,8 +56,8 @@ describe('Tests of UserInterface', () => {
             const ui = new UserInterface(game, readline)
             ui.getUserInput()
 
-            expect(readline.hasQuestionBeenCalled())
-                .toBe(true)
+            expect(readline.getAskedQuestion())
+                .toEqual('\tWhat do you want to do?: ')
         })
 
         it('Should return 2', () => {
@@ -72,9 +72,9 @@ describe('Tests of UserInterface', () => {
     })
 
     describe('Test of displayIncorrectGuess', () => {
-        // it('Should call console.log with correct message', () => {
+        it('Should call console.log with correct message', () => {
             // base on die mock
-        // })
+        })
     })
 
     describe('Test of displayCorrectGuess', () => {
