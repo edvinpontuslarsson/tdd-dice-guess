@@ -25,7 +25,7 @@ class UserInterface {
             // if(!userInput) userInput = this.getUserInput() // see below, make getUserInput private
 
             // Warning! getUserInput stops and listens, change this implementation
-            return this.getUserInput() === 'r'
+            return this.getUserInput().toLowerCase() === 'r'
         }
 
         this.displayCorrectGuess = () => {
