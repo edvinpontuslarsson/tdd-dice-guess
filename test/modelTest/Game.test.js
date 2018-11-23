@@ -50,9 +50,16 @@ describe('Tests of Game instance', () => {
   })
 
   describe('Tests of isGuessCorrect', () => {
-    it('isGuessCorrect(1) should return true', () => {
-      const result = new Game(Die).isGuessCorrect(1)
-      expect(result).toBe(true)
+    it('looping isGuessCorrect(x) should return true every time', () => {
+      const game = new Game(DieStub)
+
+      let sum = 0 
+
+      for (let x = 1; x < 5; x+= 1) {
+        sum += x
+        game.rollNewDie()
+        expect(game.isGuessCorrect(sum)).toBe(true)
+      }
     })
 
     // isGuessCorrect should also reset totalDiceValue
