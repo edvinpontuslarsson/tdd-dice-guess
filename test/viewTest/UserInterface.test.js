@@ -6,7 +6,7 @@ const ReadlineSyncStub = require('./ReadlineSyncStub')
 const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
-const DieStub = require('../modelTest/DieStub')
+const DieStub = require('../modelTest/DieStub').DieStub
 
 describe('Tests of UserInterface', () => {
 
@@ -73,19 +73,37 @@ describe('Tests of UserInterface', () => {
     })
 
     describe('Test of displayIncorrectGuess', () => {
-        it('Looping and should call console.log with correct message every time', () => {
+        it('Should call console.log with correct message, test: 1', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new DieStub())
+            const simpleDieStub = { rollAndGetFaceValue: () => 1 }
+
+            const game = new Game(simpleDieStub)
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
-            for(let roll = 1; roll <= 5; roll += 1) {
-                game.rollNewDie() // Die stub returns 1, total value increments with 1
-                ui.displayIncorrectGuess()
-                expect(console.log).toHaveBeenCalledWith(
-                    `Wrong! The total dice value was ${roll}`
-                )
-            }
+            game.rollNewDie()
+            ui.displayIncorrectGuess()
+
+            expect(console.log).toHaveBeenCalledWith(
+                `Wrong! The total dice value was 1`
+            )            
+            restoreConsole()
+        })
+
+        it('Should call console.log with correct message, test: 2', () => {
+            const restoreConsole = mockConsole()
+            const simpleDieStub = { rollAndGetFaceValue: () => 3 }
+
+            const game = new Game(simpleDieStub)
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+
+            game.rollNewDie()
+            ui.displayIncorrectGuess()
+            
+            expect(console.log).toHaveBeenCalledWith(
+                `Wrong! The total dice value was 3`
+            )            
             restoreConsole()
         })
     })

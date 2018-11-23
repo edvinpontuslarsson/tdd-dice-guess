@@ -24,6 +24,13 @@ class UserInterface {
         this.displayCorrectGuess = () => {
             console.log('Correct! Congratulations!')
         }
+
+        this.displayIncorrectGuess = () => {
+            const totalDiceValue = game.getTotalDiceValue()
+            console.log(
+                `Wrong! The total dice value was ${totalDiceValue}`
+            )
+        }
     }
 }
 
