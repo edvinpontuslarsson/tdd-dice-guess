@@ -23,11 +23,11 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of rollNewDie', () => {
     it('rollNewDie() should construct Die', () => {
-      const game = new Game(Die).rollNewDie()
+      new Game(Die).rollNewDie()
       expect(Die).toHaveBeenCalled()
     })
     it('rollNewDie() should call Die.rollAndGetFaceValue()', () => {
-      const game = new Game(Die).rollNewDie()
+      new Game(Die).rollNewDie()
 
       const mockDie = Die.mock.instances[0]
       const mockRollAndGetFaceValue = mockDie.rollAndGetFaceValue
@@ -38,7 +38,10 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of getRolledDiceAmount', () => {
     it('looping getRolledDiceAmount should return correct amount every time', () => {
-      
+      for (let amount = 1; amount < 5; amount += 1) {
+        new Game(Die).rollNewDie()
+        expect(game.getRolledDiceAmount()).toBe(amount)
+      }
     })
   })
 
