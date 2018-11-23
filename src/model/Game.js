@@ -13,17 +13,17 @@ class Game {
     this.rollNewDie = () => {
       totalDiceValue += new Die().rollAndGetFaceValue()
     }
-  }
 
-  isGuessCorrect(guess) {
-    this.validateGuess(guess)
-    return guess === this.getTotalDiceValue()
-  }
+    this.isGuessCorrect = guess => {
+      this.validateGuess(guess)
+      return guess === totalDiceValue
+    }
 
-  validateGuess (guess) {
-    if (!guess) throw new CustomError.EmptyArgumentError()
-    if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
-    if (guess < 0) throw new CustomError.NegativeNumberError()
+    this.validateGuess = guess => {
+      if (!guess) throw new CustomError.EmptyArgumentError()
+      if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
+      if (guess < 0) throw new CustomError.NegativeNumberError()
+    }
   }
 }
 
