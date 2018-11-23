@@ -68,6 +68,7 @@ describe('Tests of UserInterface', () => {
         })
     })
 
+    // TODO: this can be tested with doesUserWantToRollNewDie & later didUserGuess
     describe('Test of getUserInput', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const game = new Game(new Die())
