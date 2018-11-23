@@ -1,7 +1,11 @@
 'use strict'
 
 class UserInterface {
-    displayWelcomeMessage() { console.log('Welcome!') }
+    displayInstructions() {
+        console.log(
+            'Enter "r" to roll another die or enter an integer to guess total dice value'
+        )
+    }
 }
 
 module.exports = UserInterface
