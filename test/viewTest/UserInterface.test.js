@@ -58,7 +58,14 @@ describe('Tests of UserInterface', () => {
             expect(actual).toBe(true)
         })
 
-        // also test with "R"
+        it('Should return true if called with "R"', () => {
+            const game = new Game(new Die())
+            const simpleReadlineStub = { question: () => 'R' }
+            const ui = new UserInterface(game, simpleReadlineStub)
+
+            const actual = ui.doesUserWantToRollNewDie()
+            expect(actual).toBe(true)
+        })
     })
 
     describe('Test of getUserInput', () => {
