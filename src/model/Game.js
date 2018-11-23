@@ -5,14 +5,13 @@ const CustomError = require('./CustomError')
 class Game {
   constructor(Die) {
     if (!Die) throw new CustomError.EmptyArgumentError()
-    this.Die = Die
 
     let totalDiceValue = 0
 
     this.getTotalDiceValue = () => totalDiceValue
     
     this.rollNewDie = () => {
-      totalDiceValue += new this.Die().rollAndGetFaceValue()
+      totalDiceValue += new Die().rollAndGetFaceValue()
     }
   }
 
