@@ -6,7 +6,6 @@ const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 
-// start with welcome message
 describe('Tests of UserInterface', () => {
 
     describe('Test of UserInterface constructor', () => {
