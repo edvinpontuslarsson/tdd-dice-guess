@@ -50,7 +50,16 @@ describe('Tests of Game instance', () => {
   })
 
   describe('Tests of isGuessCorrect', () => {
-    it('new Game(Die).isGuessCorrect() should throw EmptyArgumentError', () => {
+    it('isGuessCorrect(1) should return true', () => {
+      const result = new Game(Die).isGuessCorrect(1)
+      expect(result).toBe(true)
+    })
+
+    // isGuessCorrect should also reset totalDiceValue
+  })
+
+  describe('Tests that isGuessCorrect throws errors correctly', () => {
+    it('calling without arguments should throw EmptyArgumentError', () => {
       expect(() => new Game(Die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
     })
