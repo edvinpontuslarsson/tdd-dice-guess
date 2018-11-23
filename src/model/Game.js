@@ -3,8 +3,8 @@
 const CustomError = require('./CustomError')
 
 class Game {
-  constructor(Die) {
-    if (!Die) throw new CustomError.EmptyArgumentError()
+  constructor(die) {
+    if (!die) throw new CustomError.EmptyArgumentError()
 
     let rolledDiceAmount = 0
     let totalDiceValue = 0
@@ -14,7 +14,7 @@ class Game {
     
     this.rollNewDie = () => {
       rolledDiceAmount += 1
-      totalDiceValue += new Die().rollAndGetFaceValue()
+      totalDiceValue += die.rollAndGetFaceValue()
     }
 
     this.resetGame = () => {

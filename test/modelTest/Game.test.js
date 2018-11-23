@@ -23,12 +23,9 @@ describe('Tests of Game instance', () => {
   })
 
   describe('Tests of rollNewDie', () => {
-    it('rollNewDie() should construct Die', () => {
-      new Game(Die).rollNewDie()
-      expect(Die).toHaveBeenCalled()
-    })
     it('rollNewDie() should call Die.rollAndGetFaceValue()', () => {
-      new Game(Die).rollNewDie()
+      const die = new Die()
+      new Game(die).rollNewDie()
 
       const mockDie = Die.mock.instances[0]
       const mockRollAndGetFaceValue = mockDie.rollAndGetFaceValue
@@ -39,7 +36,8 @@ describe('Tests of Game instance', () => {
 
   describe('Tests of getRolledDiceAmount', () => {
     it('looping getRolledDiceAmount should return correct amount every time', () => {
-      const game = new Game(Die)
+      const die = new Die()
+      const game = new Game(die)
 
       for (let amount = 1; amount < 5; amount += 1) {
         game.rollNewDie()
@@ -51,7 +49,8 @@ describe('Tests of Game instance', () => {
   describe('Tests of rollNewDie and getTotalDiceValue', () => {
     it('Loop should result in correct number every time, based on stub', () => {
       resetDieStubFaceValue()
-      const game = new Game(DieStub)
+      const dieStub = new DieStub()
+      const game = new Game(dieStub)
 
       let sum = 0
 
@@ -67,7 +66,8 @@ describe('Tests of Game instance', () => {
   describe('Tests of isGuessCorrect', () => {
     it('looping isGuessCorrect(x) should return true every time', () => {
       resetDieStubFaceValue()
-      const game = new Game(DieStub)
+      const dieStub = new DieStub()
+      const game = new Game(dieStub)
       
       let sum = 0
       
@@ -80,25 +80,31 @@ describe('Tests of Game instance', () => {
 
     it('isGuessCorrect(2) should return false', () => {
       resetDieStubFaceValue()
-      const game = new Game(DieStub)
+      const dieStub = new DieStub()
+      const game = new Game(dieStub)
       expect(game.isGuessCorrect(2)).toBe(false)
     })
   })
 
   describe('Tests that isGuessCorrect throws errors correctly', () => {
     it('calling without arguments should throw EmptyArgumentError', () => {
-      expect(() => new Game(Die).isGuessCorrect())
+      const die = new Die()
+      expect(() => new Game(die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
     })
+
     it('calling with 1.5 or "5" should throw NotAnIntError', () => {
-      expect(() => new Game(Die).isGuessCorrect(1.5))
+      const die = new Die()
+      expect(() => new Game(die).isGuessCorrect(1.5))
         .toThrowError(CustomError.NotAnIntError)
 
-      expect(() => new Game(Die).isGuessCorrect("5"))
+      expect(() => new Game(die).isGuessCorrect("5"))
         .toThrowError(CustomError.NotAnIntError)
     })
+
     it('calling with -1 should throw NegativeNumberError', () => {
-      expect(() => new Game(Die).isGuessCorrect(-1))
+      const die = new Die()
+      expect(() => new Game(die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
     })
   })
@@ -106,7 +112,8 @@ describe('Tests of Game instance', () => {
   describe('Tests of resetGame', () => {
     it('should reset total dice value', () => {
       resetDieStubFaceValue()
-      const game = new Game(DieStub)
+      const dieStub = new DieStub()
+      const game = new Game(dieStub)
       
       // simulates a round
       game.rollNewDie()
@@ -121,7 +128,8 @@ describe('Tests of Game instance', () => {
   })
 
   it('should reset rolledDiceAmount', () => {
-    const game = new Game(Die)
+    const die = new Die()
+    const game = new Game(die)
     game.rollNewDie()
 
     game.resetGame()
