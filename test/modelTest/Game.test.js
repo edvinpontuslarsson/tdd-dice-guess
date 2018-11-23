@@ -112,10 +112,12 @@ describe('Tests of Game instance', () => {
       expect(game.getTotalDiceValue()).toBe(1)
       expect(game.isGuessCorrect(1)).toBe(true)
 
-      game.resetTotalDiceValue()
+      game.resetGame()
       
       const actualDiceValue = game.getTotalDiceValue()
       expect(actualDiceValue).toBe(0)
     })
   })
+
+  // it('should reset rolledDiceAmount')
 })

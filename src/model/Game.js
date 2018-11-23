@@ -17,7 +17,7 @@ class Game {
       totalDiceValue += new Die().rollAndGetFaceValue()
     }
 
-    this.resetTotalDiceValue = () => { totalDiceValue = 0 }
+    this.resetGame = () => { totalDiceValue = 0 }
 
     this.isGuessCorrect = guess => {
       this.validateGuess(guess)
