@@ -6,6 +6,7 @@ const ReadlineSyncStub = require('./ReadlineSyncStub')
 const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
+const DieStub = require('../modelTest/DieStub')
 
 describe('Tests of UserInterface', () => {
 
@@ -72,20 +73,19 @@ describe('Tests of UserInterface', () => {
     })
 
     describe('Test of displayIncorrectGuess', () => {
-        it('Should call console.log with correct message', () => {
-            // base on die mock
-
+        it('Looping and should call console.log with correct message every time', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new Die())
+            const game = new Game(new DieStub())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
-            ui.displayIncorrectGuess()
-
-            expect(console.log).toHaveBeenCalledWith(
-                ``
-            )
-
+            for(let roll = 1; roll <= 5; roll += 1) {
+                game.rollNewDie() // Die stub returns 1, total value increments with 1
+                ui.displayIncorrectGuess()
+                expect(console.log).toHaveBeenCalledWith(
+                    `Wrong! The total dice value was ${roll}`
+                )
+            }
             restoreConsole()
         })
     })
