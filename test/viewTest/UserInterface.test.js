@@ -6,7 +6,6 @@ const ReadlineSyncStub = require('./ReadlineSyncStub')
 const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
-const DieStub = require('../modelTest/DieStub').DieStub
 
 describe('Tests of UserInterface', () => {
 
@@ -49,12 +48,25 @@ describe('Tests of UserInterface', () => {
         })
     })
 
+    describe('Tests of doesUserWantToRollNewDie', () => {
+        it('Should return true if called with "r"', () => {
+            const game = new Game(new Die())
+            const simpleReadlineStub = { question: () => 'r' }
+            const ui = new UserInterface(game, simpleReadlineStub)
+
+            const actual = ui.doesUserWantToRollNewDie()
+            expect(actual).toBe(true)
+        })
+
+        // also test with "R"
+    })
+
     describe('Test of getUserInput', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
-
             const ui = new UserInterface(game, readline)
+            
             ui.getUserInput()
 
             expect(readline.getAskedQuestion())
