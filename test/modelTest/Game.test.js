@@ -36,8 +36,14 @@ describe('Tests of Game instance', () => {
     })
   })
 
+  describe('Tests of getRolledDiceAmount', () => {
+    it('looping getRolledDiceAmount should return correct amount every time', () => {
+      
+    })
+  })
+
   describe('Tests of rollNewDie and getTotalDiceValue', () => {
-    it('Should result in correct number every time, based on stub', () => {
+    it('Loop should result in correct number every time, based on stub', () => {
       resetDieStubFaceValue()
       const game = new Game(DieStub)
 

@@ -14,12 +14,12 @@ class Game {
       totalDiceValue += new Die().rollAndGetFaceValue()
     }
 
+    this.resetTotalDiceValue = () => { totalDiceValue = 0 }
+
     this.isGuessCorrect = guess => {
       this.validateGuess(guess)
       return guess === totalDiceValue
     }
-
-    this.resetTotalDiceValue = () => { totalDiceValue = 0 }
 
     this.validateGuess = guess => {
       if (!guess) throw new CustomError.EmptyArgumentError()
