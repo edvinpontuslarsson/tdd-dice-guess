@@ -17,6 +17,10 @@ class UserInterface {
             )
         }
 
+        this.getUserInput = () => {
+            readline.question('\tWhat do you want to do?: ')
+        }
+
         this.displayCorrectGuess = () => { console.log('Correct! Congratulations!') }
     }
 }
