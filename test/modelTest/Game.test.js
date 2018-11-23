@@ -71,17 +71,6 @@ describe('Tests of Game instance', () => {
       const game = new Game(DieStub)
       expect(game.isGuessCorrect(2)).toBe(false)
     })
-
-    it('isGuessCorrect should reset total dice value for next round', () => {
-      resetDieStubFaceValue()
-      const game = new Game(DieStub)
-      
-      game.rollNewDie()
-      expect(game.getTotalDiceValue()).toBe(1)
-      expect(game.isGuessCorrect(1)).toBe(true)
-
-      expect(game.getTotalDiceValue()).toBe(0)
-    })
   })
 
   describe('Tests that isGuessCorrect throws errors correctly', () => {
@@ -99,6 +88,23 @@ describe('Tests of Game instance', () => {
     it('calling with -1 should throw NegativeNumberError', () => {
       expect(() => new Game(Die).isGuessCorrect(-1))
         .toThrowError(CustomError.NegativeNumberError)
+    })
+  })
+
+  describe('Tests of resetTotalDiceValue', () => {
+    it('should reset total dice value', () => {
+      resetDieStubFaceValue()
+      const game = new Game(DieStub)
+      
+      // simulates a round
+      game.rollNewDie()
+      expect(game.getTotalDiceValue()).toBe(1)
+      expect(game.isGuessCorrect(1)).toBe(true)
+
+      game.resetTotalDiceValue()
+      
+      const actualDiceValue = game.getTotalDiceValue()
+      expect(actualDiceValue).toBe(0)
     })
   })
 })
