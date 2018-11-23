@@ -75,7 +75,18 @@ describe('Tests of UserInterface', () => {
         it('Should call console.log with correct message', () => {
             // base on die mock
 
+            const restoreConsole = mockConsole()
             const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+
+            ui.displayIncorrectGuess()
+
+            expect(console.log).toHaveBeenCalledWith(
+                ``
+            )
+
+            restoreConsole()
         })
     })
 
