@@ -60,15 +60,21 @@ describe('Tests of UserInterface', () => {
                 .toBe(true)
         })
 
-        it('Should return 1', () => {
+        it('Should return 2', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
             const ui = new UserInterface(game, readline)
             const actual = ui.getUserInput()
             
-            expect(actual).toBe(1)
+            expect(actual).toBe(2)
         })
+    })
+
+    describe('Test of displayIncorrectGuess', () => {
+        // it('Should call console.log with correct message', () => {
+            // base on die mock
+        // })
     })
 
     describe('Test of displayCorrectGuess', () => {

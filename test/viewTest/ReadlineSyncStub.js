@@ -9,7 +9,7 @@ class ReadlineSyncStub {
 
         this.question = () => {
             hasQuestionBeenCalled = true
-            return 1
+            return 2
         }
     }
 }
