@@ -7,12 +7,6 @@ const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 
-jest.mock('./ReadlineSyncStub')
-
-beforeEach(() => {
-    ReadlineSyncStub.mockClear()
-})
-
 describe('Tests of UserInterface', () => {
 
     describe('Test of UserInterface constructor', () => {
@@ -62,11 +56,8 @@ describe('Tests of UserInterface', () => {
             const ui = new UserInterface(game, readline)
             ui.getUserInput()
 
-            const mockReadline = ReadlineSyncStub.mock.instances[0]
-            const mockQuestion = mockReadline.question
-
-            expect(mockQuestion)
-                .toHaveBeenCalledWith('\tWhat do you want to do?: ')
+            expect(readline.hasQuestionBeenCalled())
+                .toBe(true)
         })
 
         it('Should return 1', () => {
@@ -75,7 +66,7 @@ describe('Tests of UserInterface', () => {
 
             const ui = new UserInterface(game, readline)
             const actual = ui.getUserInput()
-
+            
             expect(actual).toBe(1)
         })
     })

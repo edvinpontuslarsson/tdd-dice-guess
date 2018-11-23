@@ -12,16 +12,16 @@ class UserInterface {
         }
 
         this.displayInstructions = () => {
-            console.log(
-                'Enter "r" to roll another die or enter an integer to guess total dice value'
-            )
+            console.log('Enter "r" to roll another die or ' +
+                'enter an integer to guess total dice value')
         }
 
-        this.getUserInput = () => {
+        this.getUserInput = () => 
             readline.question('\tWhat do you want to do?: ')
-        }
 
-        this.displayCorrectGuess = () => { console.log('Correct! Congratulations!') }
+        this.displayCorrectGuess = () => {
+            console.log('Correct! Congratulations!')
+        }
     }
 }
 
