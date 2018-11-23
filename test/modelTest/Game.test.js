@@ -62,6 +62,11 @@ describe('Tests of Game instance', () => {
       }
     })
 
+    it('isGuessCorrect(2) should return false', () => {
+      const game = new Game(DieStub)
+      expect(game.isGuessCorrect(2)).toBe(false)
+    })
+
     // isGuessCorrect should also reset totalDiceValue
   })
 
