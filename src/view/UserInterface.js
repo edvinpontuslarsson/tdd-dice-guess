@@ -4,7 +4,8 @@ const CustomError = require('../../src/model/CustomError')
 
 class UserInterface {
     constructor (game, readlineSync) {
-        if(!game) throw new CustomError.EmptyArgumentError()
+        if(!game || !readlineSync) 
+            throw new CustomError.EmptyArgumentError()
 
         let userInput
 
