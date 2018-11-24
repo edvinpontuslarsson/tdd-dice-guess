@@ -3,13 +3,16 @@
 const CustomError = require('../../src/model/CustomError')
 
 class UserInterface {
-    constructor (game, readline) {
+    constructor (game, readlineSync) {
         if(!game) throw new CustomError.EmptyArgumentError()
 
         let userInput
 
+        /**
+         * Synchronous, stops program and waits for user input
+         */
         const getUserInput = () => 
-            readline.question('\tWhat do you want to do?: ')
+            readlineSync.question('\tWhat do you want to do?: ')
 
         this.displayRolledDiceAmount = () => {
             const amount = game.getRolledDiceAmount()
