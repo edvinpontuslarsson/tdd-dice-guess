@@ -19,11 +19,9 @@ class UserInterface {
          * @param customConsole necessary argument, 
          * can also be called with built in console 
          */
-        this.displayWelcomeMessage = (customConsole) => {
+        this.initializeView = (customConsole) => {
             if(!customConsole) throw new CustomError.EmptyArgumentError()
-            
             customConsole.clear()
-            customConsole.log('Welcome!')
         }
 
         this.displayRolledDiceAmount = () => {

@@ -23,14 +23,14 @@ describe('Tests of UserInterface', () => {
         })
     })
 
-    describe('Test of displayWelcomeMessage', () => {
+    describe('Test of initializeView', () => {
         it('Should clear console', () => {
             const customConsole = new CustomConsoleStub()
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
-            ui.displayWelcomeMessage(customConsole)
+            ui.initializeView(customConsole)
             
             expect(customConsole.hasCalledClear()).toBe(true)
         })
@@ -40,20 +40,8 @@ describe('Tests of UserInterface', () => {
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
-            expect(() => ui.displayWelcomeMessage())
+            expect(() => ui.initializeView())
                 .toThrowError(CustomError.EmptyArgumentError)
-        })
-
-        it('Should call console.log with correct message', () => {
-            const restoreConsole = mockConsole()
-            const game = new Game(new Die())
-            const readline = new ReadlineSyncStub()
-            const ui = new UserInterface(game, readline)
-
-            ui.displayWelcomeMessage(console)
-
-            expect(console.log).toHaveBeenCalledWith('Welcome!')
-            restoreConsole()
         })
     })
     
