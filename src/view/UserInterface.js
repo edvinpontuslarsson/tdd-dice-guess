@@ -37,6 +37,7 @@ class UserInterface {
 
         this.didUserGuess = () => {
             if(!userInput) userInput = getUserInput()
+            return true
         }
 
         this.displayCorrectGuess = () => {

@@ -60,7 +60,7 @@ describe('Tests of UserInterface', () => {
                 .toEqual('\tWhat do you want to do?: ')
         })
         
-        it('Should return true if called with "r"', () => {
+        it('Should return true if user input is "r"', () => {
             const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'r' }
             const ui = new UserInterface(game, simpleReadlineStub)
@@ -69,7 +69,7 @@ describe('Tests of UserInterface', () => {
             expect(actual).toBe(true)
         })
 
-        it('Should return true if called with "R"', () => {
+        it('Should return true if user input is "R"', () => {
             const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'R' }
             const ui = new UserInterface(game, simpleReadlineStub)
@@ -78,7 +78,7 @@ describe('Tests of UserInterface', () => {
             expect(actual).toBe(true)
         })
 
-        it('Should return false if called with something else', () => {
+        it('Should return false if user input is something else', () => {
             const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'something else'}
             const ui = new UserInterface(game, simpleReadlineStub)
@@ -100,7 +100,7 @@ describe('Tests of UserInterface', () => {
                 .toEqual('\tWhat do you want to do?: ')
         })
 
-        it('Should return true if called with an integer', () => {
+        it('Should return true if user input is an integer', () => {
             const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 1}
             const ui = new UserInterface(game, simpleReadlineStub)
