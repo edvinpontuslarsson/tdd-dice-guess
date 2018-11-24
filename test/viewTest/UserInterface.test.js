@@ -43,6 +43,18 @@ describe('Tests of UserInterface', () => {
             expect(() => ui.displayWelcomeMessage())
                 .toThrowError(CustomError.EmptyArgumentError)
         })
+
+        it('Should call console.log with correct message', () => {
+            const restoreConsole = mockConsole()
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+
+            ui.displayWelcomeMessage(console)
+
+            expect(console.log).toHaveBeenCalledWith('Welcome!')
+            restoreConsole()
+        })
     })
     
     describe('Test of displayRolledDiceAmount', () => {
