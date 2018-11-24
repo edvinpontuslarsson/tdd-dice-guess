@@ -36,10 +36,6 @@ class UserInterface {
             )
         }
 
-        this.rectifyUser = () => {
-            console.log('Invalid input, please try again!')
-        }
-
         this.doesUserWantToRollNewDie = () => {
             if(!userInput) userInput = getUserInput()
             
@@ -52,6 +48,10 @@ class UserInterface {
         this.didUserGuess = () => {
             if(!userInput) userInput = getUserInput()
             return Number.isInteger(userInput)
+        }
+
+        this.rectifyUser = () => {
+            console.log('Invalid input, please try again!')
         }
 
         this.displayCorrectGuess = () => {
