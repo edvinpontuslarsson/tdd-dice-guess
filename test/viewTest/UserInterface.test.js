@@ -35,8 +35,14 @@ describe('Tests of UserInterface', () => {
             expect(customConsole.hasCalledClear()).toBe(true)
         })
 
-        // optional arg
-        // later test that works even without custom console
+        it('Should throw EmptyArgumentError if no console is provided', () => {
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+            
+            expect(() => ui.displayWelcomeMessage())
+                .toThrowError(CustomError.EmptyArgumentError)
+        })
     })
     
     describe('Test of displayRolledDiceAmount', () => {
