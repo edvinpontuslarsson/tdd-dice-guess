@@ -49,6 +49,17 @@ describe('Tests of UserInterface', () => {
     })
 
     describe('Tests of doesUserWantToRollNewDie', () => {
+        it('Should call ReadlineSyncStub.question with correct question', () => {
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+            
+            ui.doesUserWantToRollNewDie()
+
+            expect(readline.getAskedQuestion())
+                .toEqual('\tWhat do you want to do?: ')
+        })
+        
         it('Should return true if called with "r"', () => {
             const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'r' }
@@ -75,13 +86,15 @@ describe('Tests of UserInterface', () => {
             const actual = ui.doesUserWantToRollNewDie()
             expect(actual).toBe(false)
         })
+    })
 
+    describe('Tests of didUserGuess', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
-            ui.doesUserWantToRollNewDie()
+            ui.didUserGuess()
 
             expect(readline.getAskedQuestion())
                 .toEqual('\tWhat do you want to do?: ')
