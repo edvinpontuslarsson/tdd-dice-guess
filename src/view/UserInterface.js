@@ -32,7 +32,8 @@ class UserInterface {
             if(typeof userInput === 'string')
                 userInput = userInput.toLowerCase()
 
-            return userInput === 'r'
+            // return userInput === 'r'
+            return true
         }
 
         this.displayCorrectGuess = () => {

@@ -67,6 +67,15 @@ describe('Tests of UserInterface', () => {
             expect(actual).toBe(true)
         })
 
+        it('Should return false if called with something else', () => {
+            const game = new Game(new Die())
+            const simpleReadlineStub = { question: () => 'something else'}
+            const ui = new UserInterface(game, simpleReadlineStub)
+
+            const actual = ui.doesUserWantToRollNewDie()
+            expect(actual).toBe(false)
+        })
+
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
