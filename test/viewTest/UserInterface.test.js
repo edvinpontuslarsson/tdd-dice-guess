@@ -66,29 +66,16 @@ describe('Tests of UserInterface', () => {
             const actual = ui.doesUserWantToRollNewDie()
             expect(actual).toBe(true)
         })
-    })
 
-    // TODO: this can be tested with doesUserWantToRollNewDie & later didUserGuess
-    describe('Test of getUserInput', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
-            ui.getUserInput()
+            ui.doesUserWantToRollNewDie()
 
             expect(readline.getAskedQuestion())
                 .toEqual('\tWhat do you want to do?: ')
-        })
-
-        it('Should return 2', () => {
-            const game = new Game(new Die())
-            const readline = new ReadlineSyncStub()
-
-            const ui = new UserInterface(game, readline)
-            const actual = ui.getUserInput()
-            
-            expect(actual).toBe(2)
         })
     })
 
