@@ -35,6 +35,10 @@ class UserInterface {
             return userInput === 'r'
         }
 
+        this.didUserGuess = () => {
+            if(!userInput) userInput = getUserInput()
+        }
+
         this.displayCorrectGuess = () => {
             console.log('Correct! Congratulations!')
         }
