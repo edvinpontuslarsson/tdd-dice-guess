@@ -136,8 +136,24 @@ describe('Tests of UserInterface', () => {
         })
     })
 
+    describe('Test of rectifyUser', () => {
+        it('Should call console.log with correct message', () => {
+            const restoreConsole = mockConsole()
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+
+            ui.rectifyUser()
+
+            expect(console.log).toHaveBeenCalledWith(
+                'Invalid input, please try again!'
+            )
+            restoreConsole()
+        })
+    })
+
     describe('Test of displayIncorrectGuess', () => {
-        it('Should call console.log with correct message, test: 1', () => {
+        it('Should call console.log with correct message and correct dice value', () => {
             const restoreConsole = mockConsole()
             const simpleDieStub = { rollAndGetFaceValue: () => 1 }
 
@@ -154,7 +170,7 @@ describe('Tests of UserInterface', () => {
             restoreConsole()
         })
 
-        it('Should call console.log with correct message, test: 2', () => {
+        it('Should call console.log with correct message and correct dice value', () => {
             const restoreConsole = mockConsole()
             const simpleDieStub = { rollAndGetFaceValue: () => 3 }
 
