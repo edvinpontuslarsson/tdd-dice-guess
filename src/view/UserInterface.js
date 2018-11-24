@@ -16,8 +16,8 @@ class UserInterface {
             readlineSync.question('\tWhat do you want to do?: ')
 
         /**
-         * @param customConsole optional, 
-         * will use built-in console if a custom one is not provided
+         * @param customConsole necessary argument, 
+         * can also be called with built in console 
          */
         this.displayWelcomeMessage = (customConsole) => {
             customConsole.clear()
