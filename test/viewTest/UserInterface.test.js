@@ -14,6 +14,12 @@ describe('Tests of UserInterface', () => {
             expect(() => new UserInterface())
                 .toThrowError(CustomError.EmptyArgumentError)
         })
+
+        it('new UserInterface(game), but no readline instance, should throw EmptyArgumentError', () => {
+            const game = new Game(new Die())
+            expect(() => new UserInterface(game))
+                .toThrowError(CustomError.EmptyArgumentError)
+        })
     })
     
     describe('Test of displayRolledDiceAmount', () => {
