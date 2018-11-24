@@ -27,6 +27,10 @@ class UserInterface {
             )
         }
 
+        this.rectifyUser = () => {
+            console.log('Invalid input, please try again!')
+        }
+
         this.doesUserWantToRollNewDie = () => {
             if(!userInput) userInput = getUserInput()
             
