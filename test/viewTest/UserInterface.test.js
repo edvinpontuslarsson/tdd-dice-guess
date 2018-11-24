@@ -21,6 +21,20 @@ describe('Tests of UserInterface', () => {
                 .toThrowError(CustomError.EmptyArgumentError)
         })
     })
+
+    describe('Test of displayWelcomeMessage', () => {
+        it('Should clear console', () => {
+            const restoreConsole = mockConsole()
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
+
+            ui.displayWelcomeMessage()
+
+            expect(console.clear).toHaveBeenCalled()
+            restoreConsole()
+        })
+    })
     
     describe('Test of displayRolledDiceAmount', () => {
         it('Looping should result in correct result every time', () => {
