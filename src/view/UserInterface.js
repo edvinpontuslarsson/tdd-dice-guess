@@ -15,6 +15,10 @@ class UserInterface {
         const getUserInput = () => 
             readlineSync.question('\tWhat do you want to do?: ')
 
+        /**
+         * @param customConsole optional, 
+         * will use built-in console if a custom one is not provided
+         */
         this.displayWelcomeMessage = (customConsole) => {
             customConsole.clear()
         }
