@@ -99,6 +99,15 @@ describe('Tests of UserInterface', () => {
             expect(readline.getAskedQuestion())
                 .toEqual('\tWhat do you want to do?: ')
         })
+
+        it('Should return true if called with an integer', () => {
+            const game = new Game(new Die())
+            const simpleReadlineStub = { question: () => 1}
+            const ui = new UserInterface(game, simpleReadlineStub)
+
+            const actual = ui.didUserGuess()
+            expect(actual).toBe(true)
+        })
     })
 
     describe('Test of displayIncorrectGuess', () => {
