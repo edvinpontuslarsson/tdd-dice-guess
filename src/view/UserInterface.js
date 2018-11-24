@@ -20,6 +20,7 @@ class UserInterface {
          * can also be called with built in console 
          */
         this.displayWelcomeMessage = (customConsole) => {
+            if(!customConsole) throw new CustomError.EmptyArgumentError()
             customConsole.clear()
         }
 
