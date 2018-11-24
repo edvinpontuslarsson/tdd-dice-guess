@@ -8,7 +8,7 @@ const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 
-describe('Tests of UserInterface', () => {
+describe('Tests of UserInterface instance', () => {
 
     describe('Test of UserInterface constructor', () => {
         it('new UserInterface() should throw EmptyArgumentError', () => {
@@ -188,7 +188,7 @@ describe('Tests of UserInterface', () => {
             ui.displayIncorrectGuess()
 
             expect(console.log).toHaveBeenCalledWith(
-                `Wrong! The total dice value was 1`
+                `Wrong! The total dice value was 1. Let's play again!`
             )            
             restoreConsole()
         })
@@ -205,7 +205,7 @@ describe('Tests of UserInterface', () => {
             ui.displayIncorrectGuess()
             
             expect(console.log).toHaveBeenCalledWith(
-                `Wrong! The total dice value was 3`
+                `Wrong! The total dice value was 3. Let's play again!`
             )            
             restoreConsole()
         })
@@ -219,7 +219,8 @@ describe('Tests of UserInterface', () => {
 
             new UserInterface(game, readline).displayCorrectGuess()
 
-            expect(console.log).toHaveBeenCalledWith('Correct! Congratulations!')
+            expect(console.log)
+                .toHaveBeenCalledWith("Correct! Congratulations! Let's play again!")
             restoreConsole()
         })
     })
