@@ -22,6 +22,7 @@ class UserInterface {
         this.displayWelcomeMessage = (customConsole) => {
             if(!customConsole) throw new CustomError.EmptyArgumentError()
             customConsole.clear()
+            customConsole.log('Welcome!')
         }
 
         this.displayRolledDiceAmount = () => {

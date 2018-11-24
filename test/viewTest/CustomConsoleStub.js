@@ -10,6 +10,8 @@ class CustomConsoleStub {
         this.clear = () => {
             hasCalledClear = true
         }
+
+        this.log = () => { /* does nothing*/ }
     }
 }
 
