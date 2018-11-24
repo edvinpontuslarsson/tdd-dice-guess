@@ -27,10 +27,12 @@ class UserInterface {
         }
 
         this.doesUserWantToRollNewDie = () => {
-            // hmm, this line is not really tested
             if(!userInput) userInput = getUserInput()
+            
+            if(typeof userInput === 'string')
+                userInput = userInput.toLowerCase()
 
-            return userInput.toLowerCase() === 'r'
+            return userInput === 'r'
         }
 
         this.displayCorrectGuess = () => {
