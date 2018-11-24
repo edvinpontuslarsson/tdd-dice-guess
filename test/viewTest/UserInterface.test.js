@@ -3,6 +3,7 @@
 const UserInterface = require('../../src/view/UserInterface')
 const mockConsole = require('jest-mock-console').default
 const ReadlineSyncStub = require('./ReadlineSyncStub')
+const CustomConsoleStub = require('./CustomConsoleStub')
 const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
@@ -24,16 +25,18 @@ describe('Tests of UserInterface', () => {
 
     describe('Test of displayWelcomeMessage', () => {
         it('Should clear console', () => {
-            const restoreConsole = mockConsole()
+            const customConsole = new CustomConsoleStub()
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
-            ui.displayWelcomeMessage()
-
-            expect(console.clear).toHaveBeenCalled()
-            restoreConsole()
+            ui.displayWelcomeMessage(customConsole)
+            
+            expect(customConsole.hasCalledClear()).toBe(true)
         })
+
+        // optional arg
+        // later test that works even without custom console
     })
     
     describe('Test of displayRolledDiceAmount', () => {

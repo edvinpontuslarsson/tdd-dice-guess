@@ -15,6 +15,10 @@ class UserInterface {
         const getUserInput = () => 
             readlineSync.question('\tWhat do you want to do?: ')
 
+        this.displayWelcomeMessage = (customConsole) => {
+            customConsole.clear()
+        }
+
         this.displayRolledDiceAmount = () => {
             const amount = game.getRolledDiceAmount()
             console.log(`Amount of dice rolled: ${amount}`)
