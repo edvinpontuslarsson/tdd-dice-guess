@@ -26,7 +26,8 @@ describe('Tests of UserInterface', () => {
         it('Looping should result in correct result every time', () => {
             const restoreConsole = mockConsole()
             const game = new Game(new Die())
-            const ui = new UserInterface(game)
+            const readline = new ReadlineSyncStub()
+            const ui = new UserInterface(game, readline)
 
             for(let amount = 1; amount < 5; amount += 1) {
                 game.rollNewDie()
@@ -44,8 +45,9 @@ describe('Tests of UserInterface', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
             const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
 
-            new UserInterface(game).displayInstructions()
+            new UserInterface(game, readline).displayInstructions()
             
             expect(console.log).toHaveBeenCalledWith(
                 'Enter "r" to roll another die or enter an integer to guess total dice value'
@@ -174,8 +176,9 @@ describe('Tests of UserInterface', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
             const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
 
-            new UserInterface(game).displayCorrectGuess()
+            new UserInterface(game, readline).displayCorrectGuess()
 
             expect(console.log).toHaveBeenCalledWith('Correct! Congratulations!')
             restoreConsole()
