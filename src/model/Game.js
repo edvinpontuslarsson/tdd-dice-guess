@@ -6,32 +6,34 @@ class Game {
   constructor(die) {
     if (!die) throw new CustomError.EmptyArgumentError()
 
-    let rolledDiceAmount = 0
-    let totalDiceValue = 0
+    this.die = die
+    this.rolledDiceAmount = 0
+    this.totalDiceValue = 0
+  }
 
-    this.getRolledDiceAmount = () => rolledDiceAmount
-    this.getTotalDiceValue = () => totalDiceValue
-    
-    this.rollNewDie = () => {
-      rolledDiceAmount += 1
-      totalDiceValue += die.rollAndGetFaceValue()
-    }
+  getRolledDiceAmount() { return this.rolledDiceAmount }
 
-    this.resetGame = () => {
-      rolledDiceAmount = 0
-      totalDiceValue = 0
-    }
+  getTotalDiceValue() { return this.totalDiceValue }
 
-    this.isGuessCorrect = guess => {
-      this.validateGuess(guess)
-      return guess === totalDiceValue
-    }
+  rollNewDie() {
+    this.rolledDiceAmount += 1
+    this.totalDiceValue += this.die.rollAndGetFaceValue()
+  }
 
-    this.validateGuess = guess => {
-      if (!guess) throw new CustomError.EmptyArgumentError()
-      if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
-      if (guess < 0) throw new CustomError.NegativeNumberError()
-    }
+  resetGame() {
+    this.rolledDiceAmount = 0
+    this.totalDiceValue = 0
+  }
+
+  isGuessCorrect(guess) {
+    this.validateGuess(guess)
+    return guess === this.totalDiceValue
+  }
+
+  validateGuess(guess) {
+    if (!guess) throw new CustomError.EmptyArgumentError()
+    if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
+    if (guess < 0) throw new CustomError.NegativeNumberError()
   }
 }
 
