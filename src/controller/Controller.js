@@ -3,8 +3,8 @@
 const CustomError = require('../../src/model/CustomError')
 
 class Controller {
-    playGame(game) {
-        if(!game) throw new CustomError.EmptyArgumentError()
+    playGame(game, ui) {
+        if(!game || !ui) throw new CustomError.EmptyArgumentError()
     }
 }
 
