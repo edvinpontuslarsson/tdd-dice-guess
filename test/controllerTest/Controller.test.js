@@ -78,26 +78,22 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockdoesUserWantToRollNewDie).toHaveBeenCalled()
         })
-        /*
-        it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie}', () => {
-            initializeControllerAndRunPlayGame()
+        
+        it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
+            initializeControllerAndRunPlayGame(false, true, false, true)
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
 
-            
-
-            expect(mockRollNewDie).toHaveBeenCalled()
+            expect(mockRollNewDie).toHaveBeenCalledTimes(2)
         })
-        */
-        // if false, should call, if true, should not
-
-        // https://stackoverflow.com/questions/45758366/how-to-change-jest-mock-function-return-value-in-each-test
     })
 })
 
-function initializeControllerAndRunPlayGame(useGameStub, useUIStub) {
-    const game = useGameStub ? new GameStub(new Die()) : new Game(new Die())
-    const ui = useUIStub ? new UIStub(game, readlineSync) : new UserInterface(game, readlineSync)
+function initializeControllerAndRunPlayGame(
+    useGameStub, useUIStub, trueInGameStub, trueInUIStub
+) {
+    const game = useGameStub ? new GameStub(trueInGameStub) : new Game(new Die())
+    const ui = useUIStub ? new UIStub(trueInUIStub) : new UserInterface(game, readlineSync)
     new Controller().playGame(game, ui)
 }
