@@ -9,6 +9,7 @@ class Controller {
         game.rollNewDie()
 
         ui.initializeView(console)
+        ui.displayRolledDiceAmount()
     }
 }
 
