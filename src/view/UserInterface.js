@@ -7,54 +7,14 @@ class UserInterface {
         if(!game || !readlineSync) 
             throw new CustomError.EmptyArgumentError()
 
+        this.game = game
         let userInput
 
-        /**
-         * Synchronous, stops program and waits for user input
-         */
-        const getUserInput = () => 
-            readlineSync.question('\tWhat do you want to do?: ')
-
-        this.displayRolledDiceAmount = () => {
-            const amount = game.getRolledDiceAmount()
-            console.log(`Amount of dice rolled: ${amount}`)
-        }
-
-        this.displayInstructions = () => {
-            console.log(
-                'Enter "r" to roll another die or ' +
-                'enter a positive integer to guess total dice value'
-            )
-        }
-
-        this.doesUserWantToRollNewDie = () => {
-            if(!userInput) userInput = getUserInput()
+        this.getUserInput = () => {
+            if(!userInput) 
+                userInput = readlineSync.question('\tWhat do you want to do?: ')
             
-            if(typeof userInput === 'string')
-                userInput = userInput.toLowerCase()
-
-            return userInput === 'r'
-        }
-
-        this.didUserGuess = () => {
-            if(!userInput) userInput = getUserInput()
-            if(userInput < 0) return false
-            return Number.isInteger(userInput)
-        }
-
-        this.rectifyUser = () => {
-            console.log('Invalid input, please try again!')
-        }
-
-        this.displayCorrectGuess = () => {
-            console.log("Correct! Congratulations! Let's play again!")
-        }
-
-        this.displayIncorrectGuess = () => {
-            const value = game.getTotalDiceValue()
-            console.log(
-                `Wrong! The total dice value was ${value}. Let's play again!`
-            )
+            return userInput
         }
     }
 
@@ -65,6 +25,50 @@ class UserInterface {
     initializeView(customConsole) {
         if(!customConsole) throw new CustomError.EmptyArgumentError()
         customConsole.clear()
+    }
+
+    displayRolledDiceAmount() {
+        const amount = this.game.getRolledDiceAmount()
+        console.log(`Amount of dice rolled: ${amount}`)
+    }
+
+    displayInstructions() {
+        console.log(
+            'Enter "r" to roll another die or ' +
+            'enter a positive integer to guess total dice value'
+        )
+    }
+
+    doesUserWantToRollNewDie() {
+        let userInput = this.getUserInput()
+        
+        if(typeof userInput === 'string')
+            userInput = userInput.toLowerCase()
+
+        return userInput === 'r'
+    }
+
+    didUserGuess() {
+        const userInput = this.getUserInput()
+        
+        if(userInput < 0) return false
+        
+        return Number.isInteger(userInput)
+    }
+
+    rectifyUser() {
+        console.log('Invalid input, please try again!')
+    }
+
+    displayCorrectGuess() {
+        console.log("Correct! Congratulations! Let's play again!")
+    }
+
+    displayIncorrectGuess() {
+        const value = this.game.getTotalDiceValue()
+        console.log(
+            `Wrong! The total dice value was ${value}. Let's play again!`
+        )
     }
 }
 
