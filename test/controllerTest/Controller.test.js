@@ -31,10 +31,17 @@ describe('Tests of playGame method in Controller instance', () => {
     })
 
     describe('Tests that needed methods gets called', () => {
+        it('Should call Game.rollNewDie', () => {
+            initializeControllerAndRunPlayGame()
+
+            const mockGame = Game.mock.instances[0]
+            const mockRollNewDie = mockGame.rollNewDie
+
+            expect(mockRollNewDie).toHaveBeenCalled()
+        })
+        
         it('Should call UserInterface.initializeView with console', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
-            new Controller().playGame(game, ui)
+            initializeControllerAndRunPlayGame()
 
             const mockUI = UserInterface.mock.instances[0]
             const mockInitializeView = mockUI.initializeView
@@ -43,15 +50,19 @@ describe('Tests of playGame method in Controller instance', () => {
                 .toHaveBeenCalledWith(console)
         })
 
-        it('Should call Game.rollNewDie', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
-            new Controller().playGame(game, ui)
+        it('Should call UserInterface.displayRolledDiceAmount', () => {
+            initializeControllerAndRunPlayGame()
 
-            const mockGame = Game.mock.instances[0]
-            const mockRollNewDie = mockGame.rollNewDie
+            const mockUI = UserInterface.mock.instances[0]
+            const mockDisplayRolledDiceAmount = mockUI.displayRolledDiceAmount
 
-            expect(mockRollNewDie).toHaveBeenCalled()
+            expect(mockDisplayRolledDiceAmount).toHaveBeenCalled()
         })
     })
 })
+
+function initializeControllerAndRunPlayGame() {
+    const game = new Game(new Die())
+    const ui = new UserInterface(game, readlineSync)
+    new Controller().playGame(game, ui)
+}
