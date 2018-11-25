@@ -3,14 +3,25 @@
 const index = require('../src/index')
 const Game = require('../src/model/Game')
 const Die = require('../src/model/Die')
+const UserInterface = require('../src/view/UserInterface')
+const readlineSync = require('readline-sync')
 
-describe('Smoke tests of index file', () => {
-    it('index should be defined & run without errors', () => {
-        index()
-        expect(index).toBeDefined()
-    })
+jest.mock('../src/model/Game')
+jest.mock('../src/view/UserInterface')
+
+beforeEach(() => {
+    Game.mockClear()
+    UserInterface.mockClear()
 })
 
-// mock game, see if constructs, should make game
+// see if calls constructors
 
+describe('Tests of index file', () => {
+    it('Should call Game constructor', () => {
+        index.run() // will not work now
 
+        const mockGame = Game.mock.instances[0]
+
+        expect(mockGame).toHaveBeenCalled()
+    })
+})

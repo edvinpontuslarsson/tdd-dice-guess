@@ -13,6 +13,8 @@ class Controller {
         ui.displayInstructions()
 
         if (ui.doesUserWantToRollNewDie()) game.rollNewDie()
+
+        ui.getGuess()
     }
 }
 
