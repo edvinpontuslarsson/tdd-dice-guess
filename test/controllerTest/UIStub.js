@@ -15,6 +15,8 @@ class UIStub {
     doesUserWantToRollNewDie() { return this.returnTrue }
 
     didUserGuess() { return this.returnTrue}
+
+    getGuess() { return 1 }
 }
 
 module.exports = UIStub

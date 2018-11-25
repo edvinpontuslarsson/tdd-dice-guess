@@ -91,11 +91,11 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
 
-    /*
     describe('Tests about UserInterface.didUserGuess', () => {
-        it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}')
+        it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}', () => {
+            
+        })
     })
-    */
 })
 
 function initializeControllerAndRunPlayGame(
