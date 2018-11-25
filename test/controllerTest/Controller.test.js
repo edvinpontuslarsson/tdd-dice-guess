@@ -7,9 +7,11 @@ const Die = require('../../src/model/Die')
 const UserInterface = require('../../src/view/UserInterface')
 const readlineSync = require('readline-sync')
 
+jest.mock('../../src/model/Game')
 jest.mock('../../src/view/UserInterface')
 
 beforeEach(() => {
+    Game.mockClear()
     UserInterface.mockClear()
 })
 
@@ -32,7 +34,6 @@ describe('Tests of playGame method in Controller instance', () => {
         it('Should call UserInterface.initializeView with console', () => {
             const game = new Game(new Die())
             const ui = new UserInterface(game, readlineSync)
-
             new Controller().playGame(game, ui)
 
             const mockUI = UserInterface.mock.instances[0]
@@ -40,6 +41,17 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockInitializeView)
                 .toHaveBeenCalledWith(console)
+        })
+
+        it('Should call Game.rollNewDie', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+            new Controller().playGame(game, ui)
+
+            const mockGame = Game.mock.instances[0]
+            const mockRollNewDie = mockGame.rollNewDie
+
+            expect(mockRollNewDie).toHaveBeenCalled()
         })
     })
 })
