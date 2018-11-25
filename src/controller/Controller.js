@@ -12,8 +12,7 @@ class Controller {
         ui.displayRolledDiceAmount()
         ui.displayInstructions()
 
-        ui.doesUserWantToRollNewDie()
-        game.rollNewDie()
+        if (ui.doesUserWantToRollNewDie()) game.rollNewDie()
     }
 }
 
