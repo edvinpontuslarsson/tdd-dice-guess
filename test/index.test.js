@@ -22,6 +22,6 @@ describe('Tests of index file', () => {
 
         const mockGame = Game.mock.instances[0]
 
-        expect(mockGame).toHaveBeenCalled()
+        expect(mockGame.constructor).toHaveBeenCalled()
     })
 })
