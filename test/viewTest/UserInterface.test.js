@@ -157,6 +157,15 @@ describe('Tests of UserInterface instance', () => {
             const actual = ui.didUserGuess()
             expect(actual).toBe(false)
         })
+
+        it('Should return false if user input is a negative integer', () => {
+            const game = new Game(new Die())
+            const simpleReadlineStub = { question: () => -1 }
+            const ui = new UserInterface(game, simpleReadlineStub)
+
+            const actual = ui.didUserGuess()
+            expect(actual).toBe(false)
+        })
     })
 
     describe('Test of rectifyUser', () => {
