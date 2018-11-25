@@ -73,7 +73,7 @@ describe('Tests of UserInterface instance', () => {
             new UserInterface(game, readline).displayInstructions()
             
             expect(console.log).toHaveBeenCalledWith(
-                'Enter "r" to roll another die or enter an integer to guess total dice value'
+                'Enter "r" to roll another die or enter a positive integer to guess total dice value'
             )
             restoreConsole()
         })
