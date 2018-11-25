@@ -168,6 +168,20 @@ describe('Tests of UserInterface instance', () => {
         })
     })
 
+    describe('Test of getGuess', () => {
+        it('Looping, should retrun correct guess every time', () => {
+            const game = new Game(new Die())
+
+            for (let guess = 0; guess <= 5; guess += 1) {
+                const simpleReadlineStub = { question: () => guess }
+                const ui = new UserInterface(game, simpleReadlineStub)
+
+                const actual = ui.getGuess()
+                expect(actual).toBe(guess)
+            }            
+        })
+    })
+
     describe('Test of rectifyUser', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()

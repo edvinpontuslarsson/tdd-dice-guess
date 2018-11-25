@@ -69,16 +69,9 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockDisplayInstructions).toHaveBeenCalled()
         })
+    })
 
-        it('Should call UserInterface.doesUserWantToRollNewDie', () => {
-            initializeControllerAndRunPlayGame()
-
-            const mockUI = UserInterface.mock.instances[0]
-            const mockdoesUserWantToRollNewDie = mockUI.doesUserWantToRollNewDie
-
-            expect(mockdoesUserWantToRollNewDie).toHaveBeenCalled()
-        })
-        
+    describe('Tests about UserInterface.doesUserWantToRollNewDie', () => {        
         it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
             initializeControllerAndRunPlayGame(false, true, false, true)
 
@@ -97,6 +90,12 @@ describe('Tests of playGame method in Controller instance', () => {
             expect(mockRollNewDie).toHaveBeenCalledTimes(1)
         })
     })
+
+    /*
+    describe('Tests about UserInterface.didUserGuess', () => {
+        it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}')
+    })
+    */
 })
 
 function initializeControllerAndRunPlayGame(
