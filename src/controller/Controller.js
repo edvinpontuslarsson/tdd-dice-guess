@@ -12,8 +12,8 @@ class Controller {
         ui.displayRolledDiceAmount()
         ui.displayInstructions()
 
-        // TODO: put in if stmnts & test if stmnts
         ui.doesUserWantToRollNewDie()
+        game.rollNewDie()
     }
 }
 
