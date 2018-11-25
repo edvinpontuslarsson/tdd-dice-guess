@@ -7,7 +7,7 @@ const readlineSync = require('readline-sync')
 
 const run = () => {
     const game = new Game(new Die())
-    const ui = new UserInterface(game, readlineSync)
+    const ui = new UserInterface(game, readlineSync) // a comment
 }
 
 module.exports = { run }
