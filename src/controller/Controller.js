@@ -10,6 +10,7 @@ class Controller {
 
         ui.initializeView(console)
         ui.displayRolledDiceAmount()
+        ui.displayInstructions()
     }
 }
 
