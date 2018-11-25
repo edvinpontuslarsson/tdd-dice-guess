@@ -6,6 +6,8 @@ const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 const UserInterface = require('../../src/view/UserInterface')
 const readlineSync = require('readline-sync')
+const GameStub = require('./GameStub')
+const UIStub = require('./UIStub')
 
 jest.mock('../../src/model/Game')
 jest.mock('../../src/view/UserInterface')
@@ -32,7 +34,7 @@ describe('Tests of playGame method in Controller instance', () => {
 
     describe('Tests that needed methods gets called', () => {
         it('Should call Game.rollNewDie', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
@@ -41,7 +43,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
         
         it('Should call UserInterface.initializeView with console', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockUI = UserInterface.mock.instances[0]
             const mockInitializeView = mockUI.initializeView
@@ -51,7 +53,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
 
         it('Should call UserInterface.displayRolledDiceAmount', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockUI = UserInterface.mock.instances[0]
             const mockDisplayRolledDiceAmount = mockUI.displayRolledDiceAmount
@@ -60,7 +62,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
 
         it('Should call UserInterface.displayInstructions', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockUI = UserInterface.mock.instances[0]
             const mockDisplayInstructions = mockUI.displayInstructions
@@ -69,7 +71,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
 
         it('Should call UserInterface.doesUserWantToRollNewDie', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockUI = UserInterface.mock.instances[0]
             const mockdoesUserWantToRollNewDie = mockUI.doesUserWantToRollNewDie
@@ -78,7 +80,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
         /*
         it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie}', () => {
-            initializeControllerAndRunPlayGame(Game, UserInterface)
+            initializeControllerAndRunPlayGame()
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
@@ -94,8 +96,8 @@ describe('Tests of playGame method in Controller instance', () => {
     })
 })
 
-function initializeControllerAndRunPlayGame(Game, UI) {
-    const game = new Game(new Die())
-    const ui = new UI(game, readlineSync)
+function initializeControllerAndRunPlayGame(useGameStub, useUIStub) {
+    const game = useGameStub ? new GameStub(new Die()) : new Game(new Die())
+    const ui = useUIStub ? new UIStub(game, readlineSync) : new UserInterface(game, readlineSync)
     new Controller().playGame(game, ui)
 }
