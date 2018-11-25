@@ -56,6 +56,8 @@ class UserInterface {
         return Number.isInteger(userInput)
     }
 
+    getGuess() { return this.getUserInput() }
+
     rectifyUser() {
         console.log('Invalid input, please try again!')
     }
