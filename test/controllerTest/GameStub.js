@@ -1,15 +1,15 @@
 'use strict'
 
 class GameStub {
-    constructor(returnTrue) {
-        this.returnTrue = returnTrue
+    constructor(isTrue) {
+        this.isTrue = isTrue
     }
 
     rollNewDie() { /* does nothing */ }
 
     resetGame() { }
 
-    isGuessCorrect() { return this.returnTrue }
+    isGuessCorrect() { return this.isTrue }
 }
 
 module.exports = GameStub

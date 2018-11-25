@@ -1,8 +1,8 @@
 'use strict'
 
 class UIStub {
-    constructor(returnTrue) {
-        this.returnTrue = returnTrue
+    constructor(isTrue) {
+        this.isTrue = isTrue
     }
 
     initializeView() { /* does nothing */ }
@@ -12,9 +12,9 @@ class UIStub {
     displayCorrectGuess() { }
     displayIncorrectGuess() { }
 
-    doesUserWantToRollNewDie() { return this.returnTrue }
+    doesUserWantToRollNewDie() { return this.isTrue }
 
-    didUserGuess() { return this.returnTrue}
+    didUserGuess() { return this.isTrue}
 
     getGuess() { return 1 }
 }
