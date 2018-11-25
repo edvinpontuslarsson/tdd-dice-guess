@@ -47,6 +47,7 @@ class UserInterface {
 
         this.didUserGuess = () => {
             if(!userInput) userInput = getUserInput()
+            if(userInput < 0) return false
             return Number.isInteger(userInput)
         }
 
