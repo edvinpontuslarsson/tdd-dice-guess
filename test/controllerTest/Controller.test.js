@@ -93,7 +93,12 @@ describe('Tests of playGame method in Controller instance', () => {
 
     describe('Tests about UserInterface.didUserGuess', () => {
         it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}', () => {
-            
+            initializeControllerAndRunPlayGame(false, true, false, true)
+
+            const mockUIStub = UIStub.mock.instances[0]
+            const mockGetGuess = mockUIStub.getGuess
+
+            expect(mockGetGuess).toHaveBeenCalled()
         })
     })
 })
