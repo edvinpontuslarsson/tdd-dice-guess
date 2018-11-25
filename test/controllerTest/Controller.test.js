@@ -5,12 +5,17 @@ const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 const UserInterface = require('../../src/view/UserInterface')
-const ReadlineSyncStub = require('../viewTest/ReadlineSyncStub')
+const readlineSync = require('readline-sync')
 
-describe('Tests of Controller instance', () => {
+jest.mock('../../src/view/UserInterface')
 
-    // should throw empty arg errs, mock & call
-    describe('Tests of playGame', () => {
+beforeEach(() => {
+    UserInterface.mockClear()
+})
+
+describe('Tests of playGame method in Controller instance', () => {
+
+    describe('Tests of error throwing playGame', () => {
         it('new Controller().playGame() should throw EmptyArgumentError', () => {
             expect(() => new Controller().playGame())
                 .toThrowError(CustomError.EmptyArgumentError)
@@ -20,6 +25,21 @@ describe('Tests of Controller instance', () => {
             const game = new Game(new Die())
             expect(() => new Controller().playGame(game))
                 .toThrowError(CustomError.EmptyArgumentError)
+        })
+    })
+
+    describe('Tests that needed methods gets called', () => {
+        it('Should call UserInterface.initializeView with console', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            new Controller().playGame(game, ui)
+
+            const mockUI = UserInterface.mock.instances[0]
+            const mockInitializeView = mockUI.initializeView
+
+            expect(mockInitializeView)
+                .toHaveBeenCalledWith(console)
         })
     })
 })
