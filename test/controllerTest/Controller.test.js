@@ -8,7 +8,9 @@ const UserInterface = require('../../src/view/UserInterface')
 const readlineSync = require('readline-sync')
 
 jest.mock('../../src/model/Game')
-jest.mock('../../src/view/UserInterface')
+jest.mock('../../src/view/UserInterface', () => ({
+    doesUserWantToRollNewDie: jest.fn() // makes method mockable
+}))
 
 beforeEach(() => {
     Game.mockClear()
@@ -76,6 +78,24 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockdoesUserWantToRollNewDie).toHaveBeenCalled()
         })
+        /*
+        it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie}', () => {
+            initializeControllerAndRunPlayGame()
+
+            const mockGame = Game.mock.instances[0]
+            const mockRollNewDie = mockGame.rollNewDie
+
+            const mockUI = UserInterface.mock.instances[0]
+            const mockdoesUserWantToRollNewDie = mockUI.doesUserWantToRollNewDie
+
+            mockdoesUserWantToRollNewDie.mockReturnValueOnce(true)
+
+            expect(mockRollNewDie).toHaveBeenCalled()
+        })
+        */
+        // if false, should call, if true, should not
+
+        // https://stackoverflow.com/questions/45758366/how-to-change-jest-mock-function-return-value-in-each-test
     })
 })
 
