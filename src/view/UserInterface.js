@@ -15,15 +15,6 @@ class UserInterface {
         const getUserInput = () => 
             readlineSync.question('\tWhat do you want to do?: ')
 
-        /**
-         * @param customConsole necessary argument, 
-         * can also be called with built in console 
-         */
-        this.initializeView = (customConsole) => {
-            if(!customConsole) throw new CustomError.EmptyArgumentError()
-            customConsole.clear()
-        }
-
         this.displayRolledDiceAmount = () => {
             const amount = game.getRolledDiceAmount()
             console.log(`Amount of dice rolled: ${amount}`)
@@ -65,6 +56,15 @@ class UserInterface {
                 `Wrong! The total dice value was ${value}. Let's play again!`
             )
         }
+    }
+
+    /**
+     * @param customConsole necessary argument, 
+     * can also be called with built in console 
+     */
+    initializeView(customConsole) {
+        if(!customConsole) throw new CustomError.EmptyArgumentError()
+        customConsole.clear()
     }
 }
 
