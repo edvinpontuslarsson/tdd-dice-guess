@@ -12,7 +12,7 @@ describe('Tests of Controller instance', () => {
     // should throw empty arg errs, mock & call
     describe('Tests of playGame', () => {
         it('new Controller().playGame() should throw EmptyArgumentError', () => {
-            expect(() => new Controller())
+            expect(() => new Controller().playGame())
                 .toThrowError(CustomError.EmptyArgumentError)
         })
     })
