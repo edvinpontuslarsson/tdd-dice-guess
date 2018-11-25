@@ -14,14 +14,20 @@ beforeEach(() => {
     UserInterface.mockClear()
 })
 
-// see if calls constructors
-
 describe('Tests of index file', () => {
     it('Should call Game constructor', () => {
-        index.run() // will not work now
+        index.run()
 
         const mockGame = Game.mock.instances[0]
 
         expect(mockGame.constructor).toHaveBeenCalled()
+    })
+
+    it('Should call UserInterface constructor', () => {
+        index.run()
+
+        const mockUI = UserInterface.mock.instances[0]
+
+        expect(mockUI.constructor).toHaveBeenCalled()
     })
 })
