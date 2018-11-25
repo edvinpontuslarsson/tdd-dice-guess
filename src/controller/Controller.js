@@ -6,9 +6,9 @@ class Controller {
     playGame(game, ui) {
         if(!game || !ui) throw new CustomError.EmptyArgumentError()
 
-        ui.initializeView(console)
-
         game.rollNewDie()
+
+        ui.initializeView(console)
     }
 }
 
