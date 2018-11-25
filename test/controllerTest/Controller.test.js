@@ -58,6 +58,15 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockDisplayRolledDiceAmount).toHaveBeenCalled()
         })
+
+        it('Should call UserInterface.displayInstructions', () => {
+            initializeControllerAndRunPlayGame()
+
+            const mockUI = UserInterface.mock.instances[0]
+            const mockDisplayInstructions = mockUI.displayInstructions
+
+            expect(mockDisplayInstructions).toHaveBeenCalled()
+        })
     })
 })
 
