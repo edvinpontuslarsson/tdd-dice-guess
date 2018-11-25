@@ -15,5 +15,11 @@ describe('Tests of Controller instance', () => {
             expect(() => new Controller().playGame())
                 .toThrowError(CustomError.EmptyArgumentError)
         })
+
+        it('Should throw throw EmptyArgumentError if only 1 argument is provided', () => {
+            const game = new Game(new Die())
+            expect(() => new Controller().playGame(game))
+                .toThrowError(CustomError.EmptyArgumentError)
+        })
     })
 })
