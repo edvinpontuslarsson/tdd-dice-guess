@@ -6,8 +6,6 @@ const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 const UserInterface = require('../../src/view/UserInterface')
 const readlineSync = require('readline-sync')
-const GameStub = require('./GameStub')
-const UIStub = require('./UIStub')
 
 jest.mock('../../src/model/Game')
 jest.mock('../../src/view/UserInterface')
@@ -77,23 +75,25 @@ describe('Tests of playGame method in Controller instance', () => {
     describe('Tests about UserInterface.doesUserWantToRollNewDie', () => {        
         it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
             const game = new Game(new Die())
-            
-            UIStub.doesUserWantToRollNewDie = getFunctionThatReturns(true)
+            const ui = new UserInterface(game, readlineSync)
 
-            new Controller().playGame(game, UIStub)
+            ui.doesUserWantToRollNewDie = getFunctionThatReturns(true)
+
+            new Controller().playGame(game, ui)
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
 
             expect(mockRollNewDie).toHaveBeenCalledTimes(2)
         })
-        
+
         it('if !UserInterface.doesUserWantToRollNewDie {Should not call Game.rollNewDie again}', () => {
             const game = new Game(new Die())
-            
-            UIStub.doesUserWantToRollNewDie = getFunctionThatReturns(false)
+            const ui = new UserInterface(game, readlineSync)
 
-            new Controller().playGame(game, UIStub)
+            ui.doesUserWantToRollNewDie = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui)
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
@@ -102,16 +102,18 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
     
-
+    // OK, have to try to use proper mock
+    // https://jestjs.io/docs/en/es6-class-mocks#spying-on-methods-of-our-class
     /*
     describe('Tests about UserInterface.didUserGuess', () => {
         it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}', () => {
-            initializeControllerAndRunPlayGame(false, true, false, true)
+            const game = new Game(new Die())
+            
+            UIStub.didUserGuess = getFunctionThatReturns(true)
 
-            const mockUIStub = UIStub.mock.instances[0]
-            const mockGetGuess = mockUIStub.getGuess
+            new Controller().playGame(game, UIStub)            
 
-            expect(mockGetGuess).toHaveBeenCalled()
+            expect(UIStub.getGuess).toHaveBeenCalled()
         })
     })
     */
