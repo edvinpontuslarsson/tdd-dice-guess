@@ -10,15 +10,11 @@ const GameStub = require('./GameStub')
 const UIStub = require('./UIStub')
 
 jest.mock('../../src/model/Game')
-jest.mock('./GameStub')
 jest.mock('../../src/view/UserInterface')
-jest.mock('./UIStub')
 
 beforeEach(() => {
     Game.mockClear()
-    GameStub.mockClear()
     UserInterface.mockClear()
-    UIStub.mockClear()
 })
 
 describe('Tests of playGame method in Controller instance', () => {
@@ -77,10 +73,14 @@ describe('Tests of playGame method in Controller instance', () => {
 
     // think I have to use framework to change mock functionality
 
-    /*
+    
     describe('Tests about UserInterface.doesUserWantToRollNewDie', () => {        
         it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
-            initializeControllerAndRunPlayGame(false, true, false, true)
+            const game = new Game(new Die())
+            
+            UIStub.doesUserWantToRollNewDie = getFunctionThatReturns(true)
+
+            new Controller().playGame(game, UIStub)
 
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
@@ -88,7 +88,7 @@ describe('Tests of playGame method in Controller instance', () => {
             expect(mockRollNewDie).toHaveBeenCalledTimes(2)
         })
 
-        
+        /*
         it('if !UserInterface.doesUserWantToRollNewDie {Should not call Game.rollNewDie again}', () => {
             initializeControllerAndRunPlayGame(false, true)
 
@@ -96,9 +96,9 @@ describe('Tests of playGame method in Controller instance', () => {
             const mockRollNewDie = mockGame.rollNewDie
 
             expect(mockRollNewDie).toHaveBeenCalledTimes(1)
-        })
+        })*/
     })
-    */
+    
 
     /*
     describe('Tests about UserInterface.didUserGuess', () => {
@@ -114,10 +114,12 @@ describe('Tests of playGame method in Controller instance', () => {
     */
 })
 
-function initializeControllerAndRunPlayGame(
-    useGameStub, useUIStub, trueInGameStub, trueInUIStub
-) {
-    const game = useGameStub ? new GameStub(trueInGameStub) : new Game(new Die())
-    const ui = useUIStub ? new UIStub(trueInUIStub) : new UserInterface(game, readlineSync)
+function initializeControllerAndRunPlayGame() {
+    const game = new Game(new Die())
+    const ui = new UserInterface(game, readlineSync)
     new Controller().playGame(game, ui)
+}
+
+function getFunctionThatReturns(something) {
+    return () => something
 }

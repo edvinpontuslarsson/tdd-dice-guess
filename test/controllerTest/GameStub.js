@@ -1,15 +1,10 @@
 'use strict'
 
-class GameStub {
-    constructor(isTrue) {
-        this.isTrue = isTrue
-    }
-
-    rollNewDie() { /* does nothing */ }
-
-    resetGame() { }
-
-    isGuessCorrect() { return this.isTrue }
+/**
+ * Just empty functions initially
+ */
+module.exports = {
+    rollNewDie: () => { },
+    resetGame: () => { },
+    isGuessCorrect: () => { }
 }
-
-module.exports = GameStub
