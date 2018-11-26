@@ -74,7 +74,7 @@ describe('Tests of Game instance', () => {
       for (let x = 1; x < 5; x += 1) {
         sum += x
         game.rollNewDie()
-        expect(game.isGuessCorrect(sum)).toBe(true)
+        expect(game.isGuessCorrect(sum)).toBeTruthy()
       }
     })
 
@@ -82,7 +82,7 @@ describe('Tests of Game instance', () => {
       resetDieStubFaceValue()
       const dieStub = new DieStub()
       const game = new Game(dieStub)
-      expect(game.isGuessCorrect(2)).toBe(false)
+      expect(game.isGuessCorrect(2)).toBeFalsy()
     })
   })
 
@@ -118,7 +118,7 @@ describe('Tests of Game instance', () => {
       // simulates a round
       game.rollNewDie()
       expect(game.getTotalDiceValue()).toBe(1)
-      expect(game.isGuessCorrect(1)).toBe(true)
+      expect(game.isGuessCorrect(1)).toBeTruthy()
 
       game.resetGame()
       

@@ -32,7 +32,7 @@ describe('Tests of UserInterface instance', () => {
 
             ui.initializeView(customConsole)
             
-            expect(customConsole.hasCalledClear()).toBe(true)
+            expect(customConsole.hasCalledClear()).toBeTruthy()
         })
 
         it('Should throw EmptyArgumentError if no console is provided', () => {
@@ -97,7 +97,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.doesUserWantToRollNewDie()
-            expect(actual).toBe(true)
+            expect(actual).toBeTruthy()
         })
 
         it('Should return true if user input is "R"', () => {
@@ -106,7 +106,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.doesUserWantToRollNewDie()
-            expect(actual).toBe(true)
+            expect(actual).toBeTruthy()
         })
 
         it('Should return false if user input is something else', () => {
@@ -115,7 +115,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.doesUserWantToRollNewDie()
-            expect(actual).toBe(false)
+            expect(actual).toBeFalsy()
         })
     })
 
@@ -137,7 +137,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
-            expect(actual).toBe(true)
+            expect(actual).toBeTruthy()
         })
 
         it('Should return false if user input is not a number', () => {
@@ -146,7 +146,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
-            expect(actual).toBe(false)
+            expect(actual).toBeFalsy()
         })
 
         it('Should return false if user input is not an integer', () => {
@@ -155,7 +155,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
-            expect(actual).toBe(false)
+            expect(actual).toBeFalsy()
         })
 
         it('Should return false if user input is a negative integer', () => {
@@ -164,7 +164,7 @@ describe('Tests of UserInterface instance', () => {
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
-            expect(actual).toBe(false)
+            expect(actual).toBeFalsy()
         })
     })
 

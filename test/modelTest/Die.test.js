@@ -24,7 +24,7 @@ describe('Tests of Die instance', () => {
       }
 
       expect(isEachDieValueAboveOneHundred(dieFrequencyTable))
-        .toBe(true)
+        .toBeTruthy()
     })
   })
 })
