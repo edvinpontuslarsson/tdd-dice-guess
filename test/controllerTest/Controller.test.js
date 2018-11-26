@@ -87,7 +87,7 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockRollNewDie).toHaveBeenCalledTimes(2)
         })
-/*
+        
         it('if !UserInterface.doesUserWantToRollNewDie {Should not call Game.rollNewDie again}', () => {
             const game = new Game(new Die())
             
@@ -99,7 +99,7 @@ describe('Tests of playGame method in Controller instance', () => {
             const mockRollNewDie = mockGame.rollNewDie
 
             expect(mockRollNewDie).toHaveBeenCalledTimes(1)
-        })*/
+        })
     })
     
 
