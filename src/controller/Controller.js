@@ -15,9 +15,9 @@ class Controller {
         if(ui.doesUserWantToRollNewDie()) game.rollNewDie()
 
         if(ui.didUserGuess()) {
-            ui.getGuess()
+            const guess = ui.getGuess()
 
-            game.isGuessCorrect(1)
+            game.isGuessCorrect(guess)
         }
     }
 }
