@@ -30,16 +30,7 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
 
-    describe('Tests that needed methods gets called', () => {
-        it('Should call Game.rollNewDie', () => {
-            initializeControllerAndRunPlayGame()
-
-            const mockGame = Game.mock.instances[0]
-            const mockRollNewDie = mockGame.rollNewDie
-
-            expect(mockRollNewDie).toHaveBeenCalled()
-        })
-        
+    describe('Tests that needed methods gets called', () => {        
         it('Should call UserInterface.initializeView with console', () => {
             initializeControllerAndRunPlayGame()
 
@@ -69,9 +60,8 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
 
-    
     describe('Tests about UserInterface.doesUserWantToRollNewDie', () => {        
-        it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
+        it('if user wants to roll new die, should roll one die', () => {
             const game = new Game(new Die())
             const ui = new UserInterface(game, readlineSync)
 
@@ -82,7 +72,7 @@ describe('Tests of playGame method in Controller instance', () => {
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
 
-            expect(mockRollNewDie).toHaveBeenCalledTimes(2)
+            expect(mockRollNewDie).toHaveBeenCalledTimes(1)
         })
 
         it('if !UserInterface.doesUserWantToRollNewDie {Should not call Game.rollNewDie again}', () => {
