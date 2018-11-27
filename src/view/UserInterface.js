@@ -10,9 +10,13 @@ class UserInterface {
         this.game = game
         let userInput
 
-        this.getUserInput = () => {
-            if(!userInput) 
-                userInput = readlineSync.question('\tWhat do you want to do?: ')
+        this.getUserInput = (isGameOver) => {
+            if (isGameOver) {
+                userInput = readlineSync.question('\tenter anything to play again: ')
+            } else {
+                if(!userInput) 
+                    userInput = readlineSync.question('\tWhat do you want to do?: ')
+            }
             
             return userInput
         }
@@ -64,6 +68,7 @@ class UserInterface {
 
     displayCorrectGuess() {
         console.log('Correct!')
+        this.getUserInput(true)
     }
 
     displayIncorrectGuess() {
