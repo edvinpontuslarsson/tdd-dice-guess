@@ -16,7 +16,6 @@ class Controller {
 
         if(ui.didUserGuess()) {
             const guess = ui.getGuess()
-
             game.isGuessCorrect(guess)
         }
     }
