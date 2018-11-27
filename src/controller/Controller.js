@@ -14,9 +14,11 @@ class Controller {
 
         if(ui.doesUserWantToRollNewDie()) game.rollNewDie()
 
-        if(ui.didUserGuess()) ui.getGuess()
+        if(ui.didUserGuess()) {
+            ui.getGuess()
 
-        game.isGuessCorrect(1)
+            game.isGuessCorrect(1)
+        }
     }
 }
 
