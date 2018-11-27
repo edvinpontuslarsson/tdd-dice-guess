@@ -40,7 +40,15 @@ describe('Tests of UserInterface instance', () => {
             const game = new Game(new Die())
             
             const specialReadline = {
-                question: willReturn => willReturn
+                calledFirstTime: true,
+                question: firstReturn => {
+                    if(this.calledFirstTime) {
+                        this.calledFirstTime = false
+                        return firstReturn
+                    } else {
+                        return 'Works as expected'
+                    }
+                }
             }
 
             const ui = new UserInterface(game, specialReadline)
@@ -50,7 +58,7 @@ describe('Tests of UserInterface instance', () => {
             ui.initializeView(customConsole)
             
             expect(ui.getUserInput())
-                .toBe(null)
+                .toBe('Works as expected')
         })
 
         it('Should throw EmptyArgumentError if no console is provided', () => {

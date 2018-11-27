@@ -21,7 +21,7 @@ class UserInterface {
             return userInput
         }
 
-        this.clearUserInput = () => { userInput = undefined }
+        this.clearUserInput = () => { userInput = null }
     }
 
     /**
@@ -30,6 +30,7 @@ class UserInterface {
      */
     initializeView(customConsole) {
         if(!customConsole) throw new CustomError.EmptyArgumentError()
+        this.clearUserInput()
         customConsole.clear()
     }
 
