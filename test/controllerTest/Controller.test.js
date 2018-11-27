@@ -136,7 +136,21 @@ describe('Tests of playGame method in Controller instance', () => {
             expect(ui.rectifyUser).toHaveBeenCalled()
         })
 
-        // should not call else
+        it('Should not call if valid guess input', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.doesUserWantToRollNewDie = getFunctionThatReturns(false)
+            ui.didUserGuess = getFunctionThatReturns(true)
+
+            new Controller().playGame(game, ui)
+            expect(ui.rectifyUser)
+                .not.toHaveBeenCalled()
+        })
+
+        // and should not call if valid roll
+
+        // and not if both are invalid 
     })
 
     describe('Tests about Game.isGuessCorrect', () => {
