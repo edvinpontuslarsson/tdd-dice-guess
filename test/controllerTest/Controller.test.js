@@ -69,8 +69,6 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
 
-    // think I have to use framework to change mock functionality
-
     
     describe('Tests about UserInterface.doesUserWantToRollNewDie', () => {        
         it('if UserInterface.doesUserWantToRollNewDie {Should call Game.rollNewDie again}', () => {
@@ -102,8 +100,6 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
     
-    // OK, have to try to use proper mock
-    // https://jestjs.io/docs/en/es6-class-mocks#spying-on-methods-of-our-class
     /*
     describe('Tests about UserInterface.didUserGuess', () => {
         it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}', () => {
