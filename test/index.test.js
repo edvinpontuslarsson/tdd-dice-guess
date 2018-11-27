@@ -50,4 +50,18 @@ describe('Tests of index file', () => {
 
         expect(mockPlayGame).toHaveBeenCalled()
     })
+
+    it('Should call Controller.playGame with game & ui instances', () => {
+        const readlineStub = new readlineStub()
+        
+        index.run(readlineStub) // dependency injected because original stops thread
+
+        const mockController = Controller.mock.instances[0]
+        const mockPlayGame = mockController.playGame
+
+        const gameInstance = new Game(new Die)
+        const uiInstance = new UserInterface(gameInstance, readlineStub)
+
+        expect(mockPlayGame).toHaveBeenCalledWith(gameInstance, uiInstance)
+    })
 })
