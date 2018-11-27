@@ -125,17 +125,19 @@ describe('Tests of playGame method in Controller instance', () => {
     })
 
     describe('Tests about Game.isGuessCorrect', () => {
-        it('Should here call with 1', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
+        it('Looping test, should call with right number each time', () => {
+            for (let guess = 1; guess <= 10; guess += 1) {
+                const game = new Game(new Die())
+                const ui = new UserInterface(game, readlineSync)
 
-            ui.didUserGuess = getFunctionThatReturns(true)
-            ui.getGuess = getFunctionThatReturns(1)
+                ui.didUserGuess = getFunctionThatReturns(true)
+                ui.getGuess = getFunctionThatReturns(guess)
 
-            new Controller().playGame(game, ui)
+                new Controller().playGame(game, ui)
 
-            expect(game.isGuessCorrect)
-                .toHaveBeenCalledWith(1)
+                expect(game.isGuessCorrect)
+                    .toHaveBeenCalledWith(guess)
+            }
         })
 
         it('Should not call if user did not guess', () => {
