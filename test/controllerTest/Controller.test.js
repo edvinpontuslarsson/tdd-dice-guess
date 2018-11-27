@@ -137,6 +137,18 @@ describe('Tests of playGame method in Controller instance', () => {
             expect(game.isGuessCorrect)
                 .toHaveBeenCalledWith(1)
         })
+
+        it('Should not call if user did not guess', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.didUserGuess = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui)
+
+            expect(game.isGuessCorrect)
+                .not.toHaveBeenCalled()
+        })
     })
 })
 
