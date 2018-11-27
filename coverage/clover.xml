@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1543315382994" clover="3.2.0">
-  <project timestamp="1543315382994" name="All files">
-    <metrics statements="82" coveredstatements="82" conditionals="26" coveredconditionals="25" methods="29" coveredmethods="29" elements="137" coveredelements="136" complexity="0" loc="82" ncloc="82" packages="6" files="9" classes="9">
+<coverage generated="1543323801994" clover="3.2.0">
+  <project timestamp="1543323801994" name="All files">
+    <metrics statements="85" coveredstatements="85" conditionals="28" coveredconditionals="27" methods="29" coveredmethods="29" elements="142" coveredelements="141" complexity="0" loc="85" ncloc="85" packages="6" files="9" classes="9">
       <package name="src">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="index.js" path="/home/edvin/UniCourses/2dv610/tdd-dice-guess/src/index.js">
@@ -20,17 +20,20 @@
         </file>
       </package>
       <package name="src.controller">
-        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
         <file name="Controller.js" path="/home/edvin/UniCourses/2dv610/tdd-dice-guess/src/controller/Controller.js">
-          <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+          <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
           <line num="3" count="2" type="stmt"/>
-          <line num="7" count="8" type="cond" truecount="4" falsecount="0"/>
-          <line num="9" count="6" type="stmt"/>
-          <line num="11" count="6" type="stmt"/>
-          <line num="12" count="6" type="stmt"/>
-          <line num="13" count="6" type="stmt"/>
-          <line num="15" count="6" type="cond" truecount="2" falsecount="0"/>
-          <line num="19" count="2" type="stmt"/>
+          <line num="7" count="21" type="cond" truecount="4" falsecount="0"/>
+          <line num="9" count="19" type="stmt"/>
+          <line num="11" count="19" type="stmt"/>
+          <line num="12" count="19" type="stmt"/>
+          <line num="13" count="19" type="stmt"/>
+          <line num="15" count="19" type="cond" truecount="2" falsecount="0"/>
+          <line num="17" count="19" type="cond" truecount="2" falsecount="0"/>
+          <line num="18" count="11" type="stmt"/>
+          <line num="19" count="11" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
         </file>
       </package>
       <package name="src.model">
