@@ -198,6 +198,12 @@ describe('Tests of UserInterface instance', () => {
         })
     })
 
+    // change display right/wrong guess
+
+    // make listen for "p", play again
+
+    // set userInput to false
+
     describe('Test of displayIncorrectGuess', () => {
         it('Should call console.log with correct message and correct dice value', () => {
             const restoreConsole = mockConsole()
@@ -211,7 +217,7 @@ describe('Tests of UserInterface instance', () => {
             ui.displayIncorrectGuess()
 
             expect(console.log).toHaveBeenCalledWith(
-                `Wrong! The total dice value was 1. Let's play again!`
+                `Wrong! The total dice value was 1`
             )            
             restoreConsole()
         })
