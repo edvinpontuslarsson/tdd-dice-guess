@@ -20,6 +20,8 @@ class UserInterface {
             
             return userInput
         }
+
+        this.clearUserInput = () => { userInput = undefined }
     }
 
     /**

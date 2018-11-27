@@ -35,7 +35,7 @@ describe('Tests of UserInterface instance', () => {
             expect(customConsole.hasCalledClear()).toBeTruthy()
         })
 
-        it('Should clear user input', () => {
+        it('Should set user input to null', () => {
             const customConsole = new CustomConsoleStub()
             const game = new Game(new Die())
             
@@ -50,7 +50,7 @@ describe('Tests of UserInterface instance', () => {
             ui.initializeView(customConsole)
             
             expect(ui.getUserInput())
-                .toBeUndefined()
+                .toBe(null)
         })
 
         it('Should throw EmptyArgumentError if no console is provided', () => {
