@@ -123,6 +123,21 @@ describe('Tests of playGame method in Controller instance', () => {
             expect(ui.getGuess).not.toHaveBeenCalled()
         })
     })
+
+    describe('Tests about Game.isGuessCorrect', () => {
+        it('Should here call with 1', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.didUserGuess = getFunctionThatReturns(true)
+            ui.getGuess = getFunctionThatReturns(1)
+
+            new Controller().playGame(game, ui)
+
+            expect(game.isGuessCorrect)
+                .toHaveBeenCalledWith(1)
+        })
+    })
 })
 
 function initializeControllerAndRunPlayGame() {
