@@ -100,19 +100,18 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
     
-    /*
     describe('Tests about UserInterface.didUserGuess', () => {
         it('if UserInterface.didUserGuess {Should call UserInterface.getGuess}', () => {
             const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
             
-            UIStub.didUserGuess = getFunctionThatReturns(true)
+            ui.didUserGuess = getFunctionThatReturns(true)
 
-            new Controller().playGame(game, UIStub)            
+            new Controller().playGame(game, ui)            
 
-            expect(UIStub.getGuess).toHaveBeenCalled()
+            expect(ui.getGuess).toHaveBeenCalled()
         })
     })
-    */
 })
 
 function initializeControllerAndRunPlayGame() {
