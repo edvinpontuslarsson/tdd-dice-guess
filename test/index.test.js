@@ -5,7 +5,7 @@ const Game = require('../src/model/Game')
 const Die = require('../src/model/Die')
 const UserInterface = require('../src/view/UserInterface')
 const Controller = require('../src/controller/Controller')
-const readlineStub = require('./viewTest/ReadlineSyncStub')
+const ReadlineStub = require('./viewTest/ReadlineSyncStub')
 
 jest.mock('../src/model/Game')
 jest.mock('../src/view/UserInterface')
@@ -49,19 +49,5 @@ describe('Tests of index file', () => {
         const mockPlayGame = mockController.playGame
 
         expect(mockPlayGame).toHaveBeenCalled()
-    })
-
-    it('Should call Controller.playGame with game & ui instances', () => {
-        const readlineStub = new readlineStub()
-        
-        index.run(readlineStub) // dependency injected because original stops thread
-
-        const mockController = Controller.mock.instances[0]
-        const mockPlayGame = mockController.playGame
-
-        const gameInstance = new Game(new Die)
-        const uiInstance = new UserInterface(gameInstance, readlineStub)
-
-        expect(mockPlayGame).toHaveBeenCalledWith(gameInstance, uiInstance)
     })
 })
