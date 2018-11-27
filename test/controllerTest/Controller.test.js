@@ -86,7 +86,7 @@ describe('Tests of playGame method in Controller instance', () => {
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
 
-            expect(mockRollNewDie).toHaveBeenCalledTimes(1)
+            expect(mockRollNewDie).not.toHaveBeenCalledTimes(1)
         })
     })
     
