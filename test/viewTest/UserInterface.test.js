@@ -205,38 +205,25 @@ describe('Tests of UserInterface instance', () => {
     // set userInput to false
 
     describe('Test of displayIncorrectGuess', () => {
-        it('Should call console.log with correct message and correct dice value', () => {
-            const restoreConsole = mockConsole()
-            const simpleDieStub = { rollAndGetFaceValue: () => 1 }
+        it('Looping, should call console.log with correct message and correct dice value', () => {
+            for(let value = 1; value <= 10; value += 1) {
+                const restoreConsole = mockConsole()
+                const simpleDieStub = {
+                    rollAndGetFaceValue: () => value
+                }
 
-            const game = new Game(simpleDieStub)
-            const readline = new ReadlineSyncStub()
-            const ui = new UserInterface(game, readline)
+                const game = new Game(simpleDieStub)
+                const readline = new ReadlineSyncStub()
+                const ui = new UserInterface(game, readline)
 
-            game.rollNewDie()
-            ui.displayIncorrectGuess()
+                game.rollNewDie()
+                ui.displayIncorrectGuess()
 
-            expect(console.log).toHaveBeenCalledWith(
-                `Wrong! The total dice value was 1`
-            )            
-            restoreConsole()
-        })
-
-        it('Should call console.log with correct message and correct dice value', () => {
-            const restoreConsole = mockConsole()
-            const simpleDieStub = { rollAndGetFaceValue: () => 3 }
-
-            const game = new Game(simpleDieStub)
-            const readline = new ReadlineSyncStub()
-            const ui = new UserInterface(game, readline)
-
-            game.rollNewDie()
-            ui.displayIncorrectGuess()
-            
-            expect(console.log).toHaveBeenCalledWith(
-                `Wrong! The total dice value was 3. Let's play again!`
-            )            
-            restoreConsole()
+                expect(console.log).toHaveBeenCalledWith(
+                    `Wrong! The total dice value was ${value}`
+                )            
+                restoreConsole()
+            }
         })
     })
 
