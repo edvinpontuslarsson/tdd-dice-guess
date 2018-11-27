@@ -18,6 +18,8 @@ class Controller {
             const guess = ui.getGuess()
             game.isGuessCorrect(guess)
         }
+
+        ui.rectifyUser()
     }
 }
 
