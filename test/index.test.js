@@ -34,7 +34,7 @@ describe('Tests of index file', () => {
         expect(mockUI.constructor).toHaveBeenCalled()
     })
 
-    it('Should call Controller constructor', () =>{
+    it('Should call Controller constructor', () => {
         index.run()
 
         const mockController = Controller.mock.instances[0]
@@ -42,5 +42,12 @@ describe('Tests of index file', () => {
         expect(mockController.constructor).toHaveBeenCalled()
     })
 
-    // also test, playGame, dependency inject readline
+    it('Should call Controller.playGame', () => {
+        index.run()
+
+        const mockController = Controller.mock.instances[0]
+        const mockPlayGame = mockController.playGame
+
+        expect(mockPlayGame).toHaveBeenCalled()
+    })
 })
