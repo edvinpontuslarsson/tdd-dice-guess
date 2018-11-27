@@ -236,7 +236,7 @@ describe('Tests of UserInterface instance', () => {
             new UserInterface(game, readline).displayCorrectGuess()
 
             expect(console.log)
-                .toHaveBeenCalledWith("Correct! Congratulations! Let's play again!")
+                .toHaveBeenCalledWith('Correct!')
             restoreConsole()
         })
     })
