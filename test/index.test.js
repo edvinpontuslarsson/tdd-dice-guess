@@ -7,6 +7,8 @@ const UserInterface = require('../src/view/UserInterface')
 const Controller = require('../src/controller/Controller')
 const ReadlineStub = require('./viewTest/ReadlineSyncStub')
 
+const readlineStub = new ReadlineStub()
+
 jest.mock('../src/model/Game')
 jest.mock('../src/view/UserInterface')
 jest.mock('../src/controller/Controller')
@@ -18,8 +20,8 @@ beforeEach(() => {
 })
 
 describe('Tests of index file', () => {
-    it('Should call Game constructor', () => {
-        index.run()
+    it('Should call Game constructor 10 times here', () => {
+        index.run(readlineStub)
 
         const mockGame = Game.mock.instances[0]
 
@@ -27,7 +29,7 @@ describe('Tests of index file', () => {
     })
 
     it('Should call UserInterface constructor', () => {
-        index.run()
+        index.run(readlineStub)
 
         const mockUI = UserInterface.mock.instances[0]
 
@@ -35,7 +37,7 @@ describe('Tests of index file', () => {
     })
 
     it('Should call Controller constructor', () => {
-        index.run()
+        index.run(readlineStub)
 
         const mockController = Controller.mock.instances[0]
 
@@ -43,7 +45,7 @@ describe('Tests of index file', () => {
     })
 
     it('Should call Controller.playGame', () => {
-        index.run()
+        index.run(readlineStub)
 
         const mockController = Controller.mock.instances[0]
         const mockPlayGame = mockController.playGame
