@@ -17,6 +17,8 @@ class Controller {
             if (game.isGuessCorrect(guess))
                 ui.displayCorrectGuess()
         }
+
+        ui.displayIncorrectGuess()
     }
 }
 
