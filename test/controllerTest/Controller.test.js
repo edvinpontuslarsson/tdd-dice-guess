@@ -124,45 +124,6 @@ describe('Tests of playGame method in Controller instance', () => {
         })
     })
 
-    describe('Tests about UserInterface.rectifyUser', () => {
-        it('Should call if no valid roll and no guess input', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
-
-            ui.doesUserWantToRollNewDie = getFunctionThatReturns(false)
-            ui.didUserGuess = getFunctionThatReturns(false)
-
-            new Controller().playGame(game, ui)
-            expect(ui.rectifyUser).toHaveBeenCalled()
-        })
-
-        it('Should not call if valid guess input', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
-
-            ui.doesUserWantToRollNewDie = getFunctionThatReturns(false)
-            ui.didUserGuess = getFunctionThatReturns(true)
-
-            new Controller().playGame(game, ui)
-            expect(ui.rectifyUser)
-                .not.toHaveBeenCalled()
-        })
-
-        it('Should not call if valid roll', () => {
-            const game = new Game(new Die())
-            const ui = new UserInterface(game, readlineSync)
-
-            ui.doesUserWantToRollNewDie = getFunctionThatReturns(true)
-            ui.didUserGuess = getFunctionThatReturns(false)
-
-            new Controller().playGame(game, ui) // make it look if one is true
-            expect(ui.rectifyUser)
-                .not.toHaveBeenCalled()
-        })
-
-        // and not if both are invalid 
-    })
-
     describe('Tests about Game.isGuessCorrect', () => {
         it('Looping test, should call with right number each time', () => {
             for (let guess = 1; guess <= 10; guess += 1) {
