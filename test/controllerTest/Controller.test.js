@@ -188,6 +188,23 @@ describe('Tests of playGame method in Controller instance', () => {
                 .not.toHaveBeenCalled()
         })
     })
+
+    describe('Tests about UserInterface.displayIncorrectGuess', () => {
+        it('Should call if guess is incorrect', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.didUserGuess = getFunctionThatReturns(true)
+            game.isGuessCorrect = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui)
+
+            const mockUI = UserInterface.mock.instances[0]
+            const mockDisplayIncorrectGuess = mockUI.displayIncorrectGuess
+
+            expect(mockDisplayIncorrectGuess).toHaveBeenCalled()
+        })
+    })
 })
 
 function initializeControllerAndRunPlayGame() {
