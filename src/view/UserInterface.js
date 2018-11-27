@@ -63,7 +63,7 @@ class UserInterface {
     }
 
     displayCorrectGuess() {
-        console.log("Correct! Congratulations! Let's play again!")
+        console.log('Correct!')
     }
 
     displayIncorrectGuess() {
