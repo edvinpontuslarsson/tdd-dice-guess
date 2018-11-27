@@ -35,6 +35,24 @@ describe('Tests of UserInterface instance', () => {
             expect(customConsole.hasCalledClear()).toBeTruthy()
         })
 
+        it('Should clear user input', () => {
+            const customConsole = new CustomConsoleStub()
+            const game = new Game(new Die())
+            
+            const specialReadline = {
+                question: willReturn => willReturn
+            }
+
+            const ui = new UserInterface(game, specialReadline)
+
+            ui.getUserInput() // sets user input variable
+
+            ui.initializeView(customConsole)
+            
+            expect(ui.getUserInput())
+                .toBeUndefined()
+        })
+
         it('Should throw EmptyArgumentError if no console is provided', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
