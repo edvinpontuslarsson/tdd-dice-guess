@@ -1,6 +1,9 @@
 'use strict'
 
-/*
-    Return true from is Production, change in index test to false
-    do while loop always executes once
-*/
+const isProduction = require('../src/isProduction')
+
+describe('Test of isProduction', () => {
+    it('Should return true', () => {
+        expect(isProduction()).toBeTruthy()
+    })
+})
