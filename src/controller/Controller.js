@@ -4,7 +4,7 @@ const CustomError = require('../../src/model/CustomError')
 
 class Controller {
     playGame(game, ui) {
-        if(!game || !ui) throw new CustomError.EmptyArgumentError()
+        if (!game || !ui) throw new CustomError.EmptyArgumentError()
 
         game.rollNewDie()
 
@@ -12,12 +12,14 @@ class Controller {
         ui.displayRolledDiceAmount()
         ui.displayInstructions()
 
-        if(ui.doesUserWantToRollNewDie()) game.rollNewDie()
+        if (ui.doesUserWantToRollNewDie()) game.rollNewDie()
 
-        if(ui.didUserGuess()) {
+        else if (ui.didUserGuess()) {
             const guess = ui.getGuess()
             game.isGuessCorrect(guess)
-        } else {
+        }
+        
+        else {
             ui.rectifyUser()
         }
     }

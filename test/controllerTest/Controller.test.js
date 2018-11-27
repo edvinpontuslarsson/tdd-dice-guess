@@ -148,7 +148,17 @@ describe('Tests of playGame method in Controller instance', () => {
                 .not.toHaveBeenCalled()
         })
 
-        // and should not call if valid roll
+        it('Should not call if valid roll', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.doesUserWantToRollNewDie = getFunctionThatReturns(true)
+            ui.didUserGuess = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui) // make it look if one is true
+            expect(ui.rectifyUser)
+                .not.toHaveBeenCalled()
+        })
 
         // and not if both are invalid 
     })
