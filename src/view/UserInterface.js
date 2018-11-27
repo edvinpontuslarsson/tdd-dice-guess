@@ -10,7 +10,7 @@ class UserInterface {
         this.game = game
         let userInput
 
-        this.getUserInput = (isGameOver) => {
+        this.getUserInput = isGameOver => {
             if (isGameOver) {
                 userInput = readlineSync.question('\tenter anything to play again: ')
             } else {
