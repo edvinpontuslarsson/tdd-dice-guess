@@ -111,6 +111,17 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(ui.getGuess).toHaveBeenCalled()
         })
+
+        it('if !UserInterface.didUserGuess {Should not call UserInterface.getGuess}', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+            
+            ui.didUserGuess = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui)            
+
+            expect(ui.getGuess).not.toHaveBeenCalled()
+        })
     })
 })
 
