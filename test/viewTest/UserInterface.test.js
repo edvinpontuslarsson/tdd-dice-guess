@@ -198,12 +198,6 @@ describe('Tests of UserInterface instance', () => {
         })
     })
 
-    // change display right/wrong guess
-
-    // make listen for "p", play again
-
-    // set userInput to false
-
     describe('Test of displayIncorrectGuess', () => {
         it('Looping, should call console.log with correct message and correct dice value', () => {
             for(let value = 1; value <= 10; value += 1) {
@@ -224,6 +218,16 @@ describe('Tests of UserInterface instance', () => {
                 )            
                 restoreConsole()
             }
+        })
+
+        it('Should call ReadlineSyncStub.question with "\tenter anything to play again: "', () => {
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+
+            new UserInterface(game, readline).displayCorrectGuess()
+
+            expect(readline.getAskedQuestion())
+                .toEqual('\tenter anything to play again: ')
         })
     })
 
