@@ -53,3 +53,4 @@ describe('Tests of index file', () => {
         expect(mockPlayGame).toHaveBeenCalled()
     })
 })
+
