@@ -224,7 +224,7 @@ describe('Tests of UserInterface instance', () => {
             const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
-            new UserInterface(game, readline).displayCorrectGuess()
+            new UserInterface(game, readline).displayIncorrectGuess()
 
             expect(readline.getAskedQuestion())
                 .toEqual('\tenter anything to play again: ')
@@ -242,6 +242,16 @@ describe('Tests of UserInterface instance', () => {
             expect(console.log)
                 .toHaveBeenCalledWith('Correct!')
             restoreConsole()
+        })
+
+        it('Should call ReadlineSyncStub.question with "\tenter anything to play again: "', () => {
+            const game = new Game(new Die())
+            const readline = new ReadlineSyncStub()
+
+            new UserInterface(game, readline).displayCorrectGuess()
+
+            expect(readline.getAskedQuestion())
+                .toEqual('\tenter anything to play again: ')
         })
     })
 })
