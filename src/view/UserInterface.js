@@ -76,6 +76,7 @@ class UserInterface {
         console.log(
             `Wrong! The total dice value was ${value}`
         )
+        this.getUserInput(true)
     }
 }
 
