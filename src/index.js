@@ -10,6 +10,7 @@ const run = () => {
     const game = new Game(new Die())
     const ui = new UserInterface(game, readlineSync)
     const controller = new Controller()
+    controller.playGame()
 }
 
 module.exports = { run }
