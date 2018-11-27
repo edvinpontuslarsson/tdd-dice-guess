@@ -33,29 +33,29 @@ describe('Tests of playGame method in Controller instance', () => {
     describe('Tests that needed methods gets called', () => {        
         it('Should call UserInterface.initializeView with console', () => {
             initializeControllerAndRunPlayGame()
-
+            
             const mockUI = UserInterface.mock.instances[0]
             const mockInitializeView = mockUI.initializeView
-
+            
             expect(mockInitializeView)
                 .toHaveBeenCalledWith(console)
         })
 
         it('Should call UserInterface.displayRolledDiceAmount', () => {
             initializeControllerAndRunPlayGame()
-
+            
             const mockUI = UserInterface.mock.instances[0]
             const mockDisplayRolledDiceAmount = mockUI.displayRolledDiceAmount
-
+            
             expect(mockDisplayRolledDiceAmount).toHaveBeenCalled()
         })
 
         it('Should call UserInterface.displayInstructions', () => {
             initializeControllerAndRunPlayGame()
-
+            
             const mockUI = UserInterface.mock.instances[0]
             const mockDisplayInstructions = mockUI.displayInstructions
-
+            
             expect(mockDisplayInstructions).toHaveBeenCalled()
         })
     })
@@ -68,10 +68,10 @@ describe('Tests of playGame method in Controller instance', () => {
             ui.doesUserWantToRollNewDie = getFunctionThatReturns(true)
 
             new Controller().playGame(game, ui)
-
+            
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
-
+            
             expect(mockRollNewDie).toHaveBeenCalledTimes(1)
         })
 
@@ -82,7 +82,7 @@ describe('Tests of playGame method in Controller instance', () => {
             ui.doesUserWantToRollNewDie = getFunctionThatReturns(false)
 
             new Controller().playGame(game, ui)
-
+            
             const mockGame = Game.mock.instances[0]
             const mockRollNewDie = mockGame.rollNewDie
 
@@ -97,9 +97,12 @@ describe('Tests of playGame method in Controller instance', () => {
             
             ui.didUserGuess = getFunctionThatReturns(true)
 
-            new Controller().playGame(game, ui)            
+            new Controller().playGame(game, ui)
 
-            expect(ui.getGuess).toHaveBeenCalled()
+            const mockUI = UserInterface.mock.instances[0]
+            const mockGetGuess = mockUI.getGuess
+
+            expect(mockGetGuess).toHaveBeenCalled()
         })
 
         it('if !UserInterface.didUserGuess {Should not call UserInterface.getGuess}', () => {
@@ -108,16 +111,23 @@ describe('Tests of playGame method in Controller instance', () => {
             
             ui.didUserGuess = getFunctionThatReturns(false)
 
-            new Controller().playGame(game, ui)            
+            new Controller().playGame(game, ui)  
+            
+            const mockUI = UserInterface.mock.instances[0]
+            const mockGetGuess = mockUI.getGuess
 
-            expect(ui.getGuess).not.toHaveBeenCalled()
+            expect(mockGetGuess).not.toHaveBeenCalled()
         })
     })
 
     describe('Tests about Game.isGuessCorrect', () => {
         it('Looping test, should call with right number each time', () => {
+            const game = new Game(new Die())
+
+            const mockGame = Game.mock.instances[0]
+            const mockIsGameCorrect = mockGame.isGuessCorrect
+
             for (let guess = 1; guess <= 10; guess += 1) {
-                const game = new Game(new Die())
                 const ui = new UserInterface(game, readlineSync)
 
                 ui.didUserGuess = getFunctionThatReturns(true)
@@ -125,7 +135,7 @@ describe('Tests of playGame method in Controller instance', () => {
 
                 new Controller().playGame(game, ui)
 
-                expect(game.isGuessCorrect)
+                expect(mockIsGameCorrect)
                     .toHaveBeenCalledWith(guess)
             }
         })
@@ -138,10 +148,19 @@ describe('Tests of playGame method in Controller instance', () => {
 
             new Controller().playGame(game, ui)
 
-            expect(game.isGuessCorrect)
+            const mockGame = Game.mock.instances[0]
+            const mockIsGameCorrect = mockGame.isGuessCorrect
+
+            expect(mockIsGameCorrect)
                 .not.toHaveBeenCalled()
         })
     })
+/*
+    describe('Tests about UserInterface.displayCorrectGuess', () => {
+        it('Should call if guess is correct', () => {
+
+        })
+    })*/
 })
 
 function initializeControllerAndRunPlayGame() {
