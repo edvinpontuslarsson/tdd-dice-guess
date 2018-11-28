@@ -157,9 +157,9 @@ describe('Tests of UserInterface instance', () => {
                 .toEqual('\tWhat do you want to do?: ')
         })
 
-        it('Should return true if user input is an integer', () => {
+        it('Should return true if user input is an integer in string', () => {
             const game = new Game(new Die())
-            const simpleReadlineStub = { question: () => 1}
+            const simpleReadlineStub = { question: () => '1'}
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
