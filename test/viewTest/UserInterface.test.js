@@ -195,15 +195,15 @@ describe('Tests of UserInterface instance', () => {
     })
 
     describe('Test of getGuess', () => {
-        it('Looping, should retrun correct guess every time', () => {
+        it('Looping, should retrun correct guess (as number) every time', () => {
             const game = new Game(new Die())
 
             for (let guess = 0; guess <= 5; guess += 1) {
                 const simpleReadlineStub = { question: () => guess.toString() }
                 const ui = new UserInterface(game, simpleReadlineStub)
 
-                const actual = ui.getGuess()
-                expect(actual).toBe(guess)
+                expect(ui.getGuess())
+                    .toBe(guess)
             }            
         })
     })
