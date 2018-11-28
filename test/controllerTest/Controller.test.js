@@ -236,6 +236,21 @@ describe('Tests of playGame method in Controller instance', () => {
 
             expect(mockResetGame).toHaveBeenCalled()
         })
+
+        it('Should not call if user has not guessed', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.didUserGuess = getFunctionThatReturns(false)
+
+            new Controller().playGame(game, ui)
+
+            const mockGame = Game.mock.instances[0]
+            const mockResetGame = mockGame.resetGame
+
+            expect(mockResetGame)
+                .not.toHaveBeenCalled()
+        })
     })
 })
 
