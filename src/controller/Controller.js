@@ -19,6 +19,8 @@ class Controller {
             else
                 ui.displayIncorrectGuess()
         }
+
+        game.resetGame()
     }
 }
 
