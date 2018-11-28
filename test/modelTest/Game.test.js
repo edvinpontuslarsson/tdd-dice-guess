@@ -92,7 +92,7 @@ describe('Tests of Game instance', () => {
       expect(() => new Game(die).isGuessCorrect())
         .toThrowError(CustomError.EmptyArgumentError)
     })
-
+    //
     it('Calling with 0 should not throwEmptyArgumentError', () => {
       const die = new Die()
       expect(() => new Game(die).isGuessCorrect(0))
