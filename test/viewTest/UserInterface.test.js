@@ -177,7 +177,7 @@ describe('Tests of UserInterface instance', () => {
 
         it('Should return false if user input is not an integer', () => {
             const game = new Game(new Die())
-            const simpleReadlineStub = { question: () => 1.5}
+            const simpleReadlineStub = { question: () => '1.5' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
@@ -186,7 +186,7 @@ describe('Tests of UserInterface instance', () => {
 
         it('Should return false if user input is a negative integer', () => {
             const game = new Game(new Die())
-            const simpleReadlineStub = { question: () => -1 }
+            const simpleReadlineStub = { question: () => '-1' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
             const actual = ui.didUserGuess()
