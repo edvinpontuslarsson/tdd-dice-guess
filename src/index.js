@@ -6,11 +6,7 @@ const UserInterface = require('./view/UserInterface')
 const readlineSync = require('readline-sync')
 const Controller = require('./controller/Controller')
 
-const shouldRunGame = () => {
-    const userArgument = process.argv[2]
-
-    if (userArgument === 'game') return true
-}
+const shouldRunGame = () => process.argv[2] === 'game'
 
 const run = readline => {
     const game = new Game(new Die())
