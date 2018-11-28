@@ -221,6 +221,22 @@ describe('Tests of playGame method in Controller instance', () => {
                 .not.toHaveBeenCalled()
         })
     })
+
+    describe('Tests about Game.resetGame', () => {
+        it('Should call if user has guessed', () => {
+            const game = new Game(new Die())
+            const ui = new UserInterface(game, readlineSync)
+
+            ui.didUserGuess = getFunctionThatReturns(true)
+
+            new Controller().playGame(game, ui)
+
+            const mockGame = Game.mock.instances[0]
+            const mockResetGame = mockGame.resetGame
+
+            expect(mockResetGame).toHaveBeenCalled()
+        })
+    })
 })
 
 function initializeControllerAndRunPlayGame() {
