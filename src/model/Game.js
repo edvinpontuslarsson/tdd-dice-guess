@@ -31,7 +31,7 @@ class Game {
   }
 
   validateGuess(guess) {
-    if (!guess) throw new CustomError.EmptyArgumentError()
+    if (guess === undefined) throw new CustomError.EmptyArgumentError()
     if (!Number.isInteger(guess)) throw new CustomError.NotAnIntError()
     if (guess < 0) throw new CustomError.NegativeNumberError()
   }
