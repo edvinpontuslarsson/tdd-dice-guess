@@ -1,4 +1,5 @@
-A game where you guess the total value of rolled dice.
+A game where you guess the total value of rolled dice. 
+You need to have node and npm installed to run application. 
 
 To run application, enter: </br>
 `npm start game`
