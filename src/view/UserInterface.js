@@ -56,7 +56,7 @@ class UserInterface {
     }
 
     didUserGuess() {
-        const userInput = this.getUserInput()
+        const userInput = parseInt(this.getUserInput())
         
         if(userInput < 0) return false
         
