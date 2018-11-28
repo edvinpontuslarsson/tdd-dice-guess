@@ -14,13 +14,14 @@ class Controller {
 
         if (ui.didUserGuess()) {
             const guess = ui.getGuess()
+            
             if (game.isGuessCorrect(guess))
                 ui.displayCorrectGuess()
             else
                 ui.displayIncorrectGuess()
-        }
 
-        game.resetGame()
+            game.resetGame()
+        }
     }
 }
 
