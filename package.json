@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node src/index",
     "test": "jest",
-    "watch": "jest --watch *.js",
     "coverage": "jest --coverage"
   },
   "keywords": [
