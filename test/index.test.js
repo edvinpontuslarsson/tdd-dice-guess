@@ -7,11 +7,6 @@ const UserInterface = require('../src/view/UserInterface')
 const Controller = require('../src/controller/Controller')
 const ReadlineStub = require('./viewTest/ReadlineSyncStub')
 
-/**
- * Set to false here, with do while, will execute once
- */
-const isProduction = require('../src/isProduction')
-
 const readlineStub = new ReadlineStub()
 
 jest.mock('../src/model/Game')
