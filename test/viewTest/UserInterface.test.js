@@ -8,6 +8,8 @@ const CustomError = require('../../src/model/CustomError')
 const Game = require('../../src/model/Game')
 const Die = require('../../src/model/Die')
 
+const game = new Game(new Die())
+
 describe('Tests of UserInterface instance', () => {
 
     describe('Test of UserInterface constructor', () => {
@@ -17,7 +19,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('new UserInterface(game), but no readline instance, should throw EmptyArgumentError', () => {
-            const game = new Game(new Die())
             expect(() => new UserInterface(game))
                 .toThrowError(CustomError.EmptyArgumentError)
         })
@@ -26,7 +27,6 @@ describe('Tests of UserInterface instance', () => {
     describe('Test of initializeView', () => {
         it('Should clear console', () => {
             const customConsole = new CustomConsoleStub()
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
@@ -37,7 +37,6 @@ describe('Tests of UserInterface instance', () => {
 
         it('Should set user input to null', () => {
             const customConsole = new CustomConsoleStub()
-            const game = new Game(new Die())
             
             const specialReadline = {
                 calledFirstTime: true,
@@ -62,7 +61,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should throw EmptyArgumentError if no console is provided', () => {
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
@@ -74,7 +72,6 @@ describe('Tests of UserInterface instance', () => {
     describe('Test of displayRolledDiceAmount', () => {
         it('Looping should result in correct result every time', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
@@ -93,7 +90,6 @@ describe('Tests of UserInterface instance', () => {
     describe('Test of displayInstructions', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
             new UserInterface(game, readline).displayInstructions()
@@ -107,7 +103,6 @@ describe('Tests of UserInterface instance', () => {
 
     describe('Tests of doesUserWantToRollNewDie', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
@@ -118,7 +113,6 @@ describe('Tests of UserInterface instance', () => {
         })
         
         it('Should return true if user input is "r"', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'r' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -127,7 +121,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return true if user input is "R"', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'R' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -136,7 +129,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return false if user input is something else', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'something else'}
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -147,7 +139,6 @@ describe('Tests of UserInterface instance', () => {
 
     describe('Tests of didUserGuess', () => {
         it('Should call ReadlineSyncStub.question with correct question', () => {
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
             
@@ -158,7 +149,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return true if user input is an integer in string', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => '1'}
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -167,7 +157,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return false if user input is not a number', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => 'not a number'}
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -176,7 +165,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return false if user input is not an integer', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => '1.5' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -185,7 +173,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should return false if user input is a negative integer', () => {
-            const game = new Game(new Die())
             const simpleReadlineStub = { question: () => '-1' }
             const ui = new UserInterface(game, simpleReadlineStub)
 
@@ -196,7 +183,6 @@ describe('Tests of UserInterface instance', () => {
 
     describe('Test of getGuess', () => {
         it('Looping, should retrun correct guess (as number) every time', () => {
-            const game = new Game(new Die())
 
             for (let guess = 0; guess <= 5; guess += 1) {
                 const simpleReadlineStub = { question: () => guess.toString() }
@@ -211,7 +197,6 @@ describe('Tests of UserInterface instance', () => {
     describe('Test of rectifyUser', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
             const ui = new UserInterface(game, readline)
 
@@ -247,7 +232,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should call ReadlineSyncStub.question with "\tenter anything to play again: "', () => {
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
             new UserInterface(game, readline).displayIncorrectGuess()
@@ -260,7 +244,6 @@ describe('Tests of UserInterface instance', () => {
     describe('Test of displayCorrectGuess', () => {
         it('Should call console.log with correct message', () => {
             const restoreConsole = mockConsole()
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
             new UserInterface(game, readline).displayCorrectGuess()
@@ -271,7 +254,6 @@ describe('Tests of UserInterface instance', () => {
         })
 
         it('Should call ReadlineSyncStub.question with "\tenter anything to play again: "', () => {
-            const game = new Game(new Die())
             const readline = new ReadlineSyncStub()
 
             new UserInterface(game, readline).displayCorrectGuess()
