@@ -16,6 +16,10 @@ const run = readline => {
     do
         controller.playGame(game, ui)
     while(shouldRunGame())
+
+    if (!shouldRunGame()) {
+        console.log('Play the game with the command "npm start game"')
+    }
 }
 
 run(readlineSync)
